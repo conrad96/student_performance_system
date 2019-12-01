@@ -33,14 +33,14 @@
                 Student records upload
               </header>
               <div class="panel-body">
-                <form role="form" action="<?php echo base_url(); ?>index.php/User/upload" method="POST">
+                <form role="form" enctype="multipart/form-data" action="<?php echo base_url(); ?>index.php/User/upload" method="POST">
                   <div class="form-group">
                     <label for="recordTitle">Record title</label>
                     <input type="text" class="form-control" name="record_file" id="recordTitle" placeholder="Enter Record title">
                   </div>                  
                   <div class="form-group">
                     <label for="fileUpload">File upload</label>
-                    <input type="file" id="fileUpload">
+                    <input name="recordFile" type="file" id="fileUpload">
                     <p class="help-block">.xls files allowed</p>
                   </div>
                   <div class="checkbox">
