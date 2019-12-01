@@ -8,17 +8,17 @@
                           <span>Dashboard</span>
                       </a>
           </li>
-          <!-- <li class="sub-menu">
+           <li class="sub-menu">
             <a href="javascript:;" class="">
                           <i class="icon_document_alt"></i>
-                          <span>Forms</span>
+                          <span>Process</span>
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">
-              <li><a class="" href="form_component.html">Form Elements</a></li>
-              <li><a class="" href="form_validation.html">Form Validation</a></li>
+              <li><a class="" href="<?php echo base_url(); ?>index.php/User/upload">Upload data</a></li>
+              <li><a class="" href="<?php echo base_url(); ?>index.php/User/history">History</a></li>
             </ul>
-          </li>
+          </li><!--
           <li class="sub-menu">
             <a href="javascript:;" class="">
                           <i class="icon_desktop"></i>
