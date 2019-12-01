@@ -5,4 +5,7 @@ class User extends CI_Controller {
         $data['page_title'] = 'Dashboard';
         $this->load->view("portal/index", $data);
     }
+    function upload(){
+        $this->load->view("portal/upload");
+    }
 }
