@@ -14,6 +14,10 @@ class User extends CI_Controller {
     }
     function upload(){
         $data['page_title'] = 'Upload';
+        if(!empty($_POST)){
+            //process file uploaded
+            
+        }
         $this->load->view("portal/upload", $data);
     }
     function history(){

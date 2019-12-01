@@ -33,10 +33,10 @@
                 Student records upload
               </header>
               <div class="panel-body">
-                <form role="form">
+                <form role="form" action="<?php echo base_url(); ?>index.php/User/upload" method="POST">
                   <div class="form-group">
                     <label for="recordTitle">Record title</label>
-                    <input type="text" class="form-control" id="recordTitle" placeholder="Enter Record title">
+                    <input type="text" class="form-control" name="record_file" id="recordTitle" placeholder="Enter Record title">
                   </div>                  
                   <div class="form-group">
                     <label for="fileUpload">File upload</label>
