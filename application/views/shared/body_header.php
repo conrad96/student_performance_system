@@ -27,9 +27,9 @@
           <li id="task_notificatoin_bar" class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <i class="icon-task-l"></i>
-                            <span class="badge bg-important">6</span>
+                            <!-- <span class="badge bg-important">6</span> -->
                         </a>
-            <ul class="dropdown-menu extended tasks-bar">
+            <!-- <ul class="dropdown-menu extended tasks-bar">
               <div class="notify-arrow notify-arrow-blue"></div>
               <li>
                 <p class="blue">You have 6 pending letter</p>
@@ -105,16 +105,16 @@
               <li class="external">
                 <a href="#">See All Tasks</a>
               </li>
-            </ul>
+            </ul> -->
           </li>
           <!-- task notificatoin end -->
           <!-- inbox notificatoin start-->
           <li id="mail_notificatoin_bar" class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <i class="icon-envelope-l"></i>
-                            <span class="badge bg-important">5</span>
+                            <!-- <span class="badge bg-important">5</span> -->
                         </a>
-            <ul class="dropdown-menu extended inbox">
+            <!-- <ul class="dropdown-menu extended inbox">
               <div class="notify-arrow notify-arrow-blue"></div>
               <li>
                 <p class="blue">You have 5 new messages</p>
@@ -170,7 +170,7 @@
               <li>
                 <a href="#">See all messages</a>
               </li>
-            </ul>
+            </ul> -->
           </li>
           <!-- inbox notificatoin end -->
           <!-- alert notification start-->
@@ -178,9 +178,9 @@
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 
                             <i class="icon-bell-l"></i>
-                            <span class="badge bg-important">7</span>
+                            <!-- <span class="badge bg-important">7</span> -->
                         </a>
-            <ul class="dropdown-menu extended notification">
+            <!-- <ul class="dropdown-menu extended notification">
               <div class="notify-arrow notify-arrow-blue"></div>
               <li>
                 <p class="blue">You have 4 new notifications</p>
@@ -216,19 +216,19 @@
               <li>
                 <a href="#">See all notifications</a>
               </li>
-            </ul>
+            </ul> -->
           </li>
           <!-- alert notification end-->
           <!-- user login dropdown start-->
           <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="profile-ava">
-                                <img alt="" src="img/avatar1_small.jpg">
+                                <img alt="" src="<?php echo base_url(); ?>assets/img/avatar.png" style="width: 35px; height: 35px;">
                             </span>
-                            <span class="username">Jenifer Smith</span>
-                            <b class="caret"></b>
+                            <span class="username"><?php echo !empty($this->session->userdata['names'])? $this->session->userdata['names'] : ''; ?></span>
+                            <!-- <b class="caret"></b> -->                            
                         </a>
-            <ul class="dropdown-menu extended logout">
+            <!-- <ul class="dropdown-menu extended logout">
               <div class="log-arrow-up"></div>
               <li class="eborder-top">
                 <a href="#"><i class="icon_profile"></i> My Profile</a>
@@ -251,7 +251,7 @@
               <li>
                 <a href="documentation.html"><i class="icon_key_alt"></i> Documentation</a>
               </li>
-            </ul>
+            </ul> -->
           </li>
           <!-- user login dropdown end -->
         </ul>

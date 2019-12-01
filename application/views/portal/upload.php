@@ -25,7 +25,13 @@
               <li><i class="fa fa-upload"></i>Upload</li>
             </ol>
           </div>
-        </div>      
+        </div>   
+        <div class="row">
+        <?php 
+        print '<pre>';
+        print_r();
+        ?>
+        </div>   
 
       </section>
       <div class="text-right">

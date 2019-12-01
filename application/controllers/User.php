@@ -9,4 +9,7 @@ class User extends CI_Controller {
         $data['page_title'] = 'Upload';
         $this->load->view("portal/upload", $data);
     }
+    function history(){
+        $this->load->view("portal/history");
+    }
 }
