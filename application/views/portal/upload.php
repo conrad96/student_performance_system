@@ -27,8 +27,34 @@
           </div>
         </div>   
         <div class="row">
-        
-        </div>   
+          <div class="col-lg-6">
+            <section class="panel">
+              <header class="panel-heading">
+                Student records upload
+              </header>
+              <div class="panel-body">
+                <form role="form">
+                  <div class="form-group">
+                    <label for="recordTitle">Record title</label>
+                    <input type="text" class="form-control" id="recordTitle" placeholder="Enter Record title">
+                  </div>                  
+                  <div class="form-group">
+                    <label for="fileUpload">File upload</label>
+                    <input type="file" id="fileUpload">
+                    <p class="help-block">.xls files allowed</p>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" checked> keep students records
+                    </label>
+                  </div>
+                  <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+              </div>
+            </section>
+          </div>
+          
+        </div> 
 
       </section>
       <div class="text-right">
