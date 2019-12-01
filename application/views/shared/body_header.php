@@ -226,11 +226,11 @@
                                 <img alt="" src="<?php echo base_url(); ?>assets/img/avatar.png" style="width: 35px; height: 35px;">
                             </span>
                             <span class="username"><?php echo !empty($this->session->userdata['names'])? $this->session->userdata['names'] : ''; ?></span>
-                            <!-- <b class="caret"></b> -->                            
+                            <b class="caret"></b>                            
                         </a>
-            <!-- <ul class="dropdown-menu extended logout">
+            <ul class="dropdown-menu extended logout">
               <div class="log-arrow-up"></div>
-              <li class="eborder-top">
+              <!-- <li class="eborder-top">
                 <a href="#"><i class="icon_profile"></i> My Profile</a>
               </li>
               <li>
@@ -241,17 +241,17 @@
               </li>
               <li>
                 <a href="#"><i class="icon_chat_alt"></i> Chats</a>
-              </li>
+              </li> -->
               <li>
-                <a href="login.html"><i class="icon_key_alt"></i> Log Out</a>
+                <a href="<?php echo base_url(); ?>index.php/User/logout"><i class="icon_key_alt"></i> Log Out</a>
               </li>
-              <li>
+              <!-- <li>
                 <a href="documentation.html"><i class="icon_key_alt"></i> Documentation</a>
               </li>
               <li>
                 <a href="documentation.html"><i class="icon_key_alt"></i> Documentation</a>
-              </li>
-            </ul> -->
+              </li> -->
+            </ul> 
           </li>
           <!-- user login dropdown end -->
         </ul>
