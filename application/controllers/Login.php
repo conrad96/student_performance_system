@@ -23,6 +23,8 @@ class Login extends CI_Controller {
                     $userdata['role'] = $user->role;
                 }
                 $this->session->set_userdata($userdata);
+                //redirect user to portal
+                redirect("User/index");
             }else{
                 $data['msg'] = "incorrect username or password";
             }
