@@ -3,6 +3,6 @@
 class User extends CI_Controller {
     function index(){      
         $data['page_title'] = 'Dashboard';
-        $this->load->view("portal/index");
+        $this->load->view("portal/index", $data);
     }
 }
