@@ -16,7 +16,16 @@ class User extends CI_Controller {
         $data['page_title'] = 'Upload';
         if(!empty($_POST)){
             //process file uploaded
-            
+            //move file to samples folder
+
+            $file_name = $_FILES['recordFile']['name'];
+            $file = $_FILES['recordFile']['tmp_name'];
+            $sample = str_replace(' ', '_', strtolower($_POST['record_file']));
+            //move_uploaded_file()
+            $path = $_SERVER['DOCUMENT_ROOT'];
+            if(move_uploaded_file($file, $path.'sps/assets/samples/'.$file_name.'_'.$sample)){
+                //store in database
+            }
         }
         $this->load->view("portal/upload", $data);
     }
