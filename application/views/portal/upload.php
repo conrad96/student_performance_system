@@ -27,10 +27,7 @@
           </div>
         </div>   
         <div class="row">
-        <?php 
-        print '<pre>';
-        print_r();
-        ?>
+        
         </div>   
 
       </section>
