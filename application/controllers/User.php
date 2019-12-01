@@ -6,6 +6,7 @@ class User extends CI_Controller {
         $this->load->view("portal/index", $data);
     }
     function upload(){
-        $this->load->view("portal/upload");
+        $data['page_title'] = 'Upload';
+        $this->load->view("portal/upload", $data);
     }
 }
