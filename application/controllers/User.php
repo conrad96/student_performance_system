@@ -30,6 +30,13 @@ class User extends CI_Controller {
                 $sample['sample_file'] = $fileName;
                 $sample['author'] = $this->session->userdata['userid'];
                 $this->db->insert("sample_data", $sample);
+                //store students records
+                $sample_id = $this->db->insert_id();
+                //load file
+                $excel_file = $path.'/sps/assets/samples/'.$fileName;
+                $objPHPExcel = PHPExcel_IOFactory::load($excel_file);
+                $cell_collection = $objPHPExcel->getActiveSheet()->getCellCollection();
+                
             }else{
               $data['msg'] = 'Error!. File upload failed, please try again';
             }
