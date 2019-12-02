@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class User extends CI_Controller {    
+class User extends CI_Controller {
 
     function __construct(){
         parent::__construct();
@@ -8,8 +8,8 @@ class User extends CI_Controller {
         if(!$isloggedin) redirect("Login/index");
     }
 
-    function index(){      
-        $data['page_title'] = 'Dashboard';        
+    function index(){
+        $data['page_title'] = 'Dashboard';
         $this->load->view("portal/index", $data);
     }
     function upload(){
@@ -19,7 +19,7 @@ class User extends CI_Controller {
             //move file to samples folder
             $file_name = $_FILES['recordFile']['name'];
             $file = $_FILES['recordFile']['tmp_name'];
-            $sample = str_replace(' ', '_', strtolower($_POST['record_file']));
+            $sample = strtolower(str_replace(' ', '_', $_POST['record_file']));
 
             $path = $_SERVER['DOCUMENT_ROOT'];
             if(move_uploaded_file($file, $path.'/sps/assets/samples/'.$sample.'_'.$file_name)){
