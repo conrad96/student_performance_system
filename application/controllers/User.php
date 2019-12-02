@@ -44,7 +44,12 @@ class User extends CI_Controller {
                   $student_name = $objPHPExcel->getSheet($num)->getCell('A3')->getValue()->__toString();
                   $student_sex = $objPHPExcel->getSheet($num)->getCell('B4')->getValue()->__toString();
                   $student_reg = $objPHPExcel->getSheet($num)->getCell('C4')->getValue()->__toString();
-                  //results
+                  //term
+                  $term = $objPHPExcel->getSheet($num)->getCell('H1')->getValue()->__toString();
+                  //exam type
+                  $bot_exam_type = $objPHPExcel->getSheet($num)->getCell('D2')->getValue()->__toString();
+                  $mot_exam_type = $objPHPExcel->getSheet($num)->getCell('H2')->getValue()->__toString();
+                  $eot_exam_type = $objPHPExcel->getSheet($num)->getCell('L2')->getValue()->__toString();
                 }
                 exit();
             }else{
