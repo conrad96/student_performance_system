@@ -29,7 +29,7 @@ class User extends CI_Controller {
                 $sample['author'] = $this->session->userdata['userid'];
                 $this->db->insert("sample_data", $sample);
             }else{
-              $data['msg'] = 'File upload failed, please try again';
+              $data['msg'] = 'Error!. File upload failed, please try again';
             }
         }
         $this->load->view("portal/upload", $data);
