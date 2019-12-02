@@ -35,8 +35,18 @@ class User extends CI_Controller {
                 //load file
                 $excel_file = $path.'/sps/assets/samples/'.$fileName;
                 $objPHPExcel = PHPExcel_IOFactory::load($excel_file);
-                $cell_collection = $objPHPExcel->getActiveSheet()->getCellCollection();
-                
+                //iterate all sheets and save data for each sheet
+                $num_sheets = $objPHPExcel->getSheetCount();
+                print '<pre>';
+                for($num = 0; $num < $num_sheets; $num++){
+                  $class = $objPHPExcel->getSheet($num)->getCell('A1')->getValue()->__toString();
+                  //students
+                  $student_name = $objPHPExcel->getSheet($num)->getCell('A3')->getValue()->__toString();
+                  $student_sex = $objPHPExcel->getSheet($num)->getCell('B4')->getValue()->__toString();
+                  $student_reg = $objPHPExcel->getSheet($num)->getCell('C4')->getValue()->__toString();
+                  //results
+                }
+                exit();
             }else{
               $data['msg'] = 'Error!. File upload failed, please try again';
             }
