@@ -19,13 +19,15 @@ class User extends CI_Controller {
             //move file to samples folder
             $file_name = $_FILES['recordFile']['name'];
             $file = $_FILES['recordFile']['tmp_name'];
-            $sample = strtolower(str_replace(' ', '_', $_POST['record_file']));
+            $sample_name = strtolower(str_replace(' ', '_', $_POST['record_file']));
 
             $path = $_SERVER['DOCUMENT_ROOT'];
-            if(move_uploaded_file($file, $path.'/sps/assets/samples/'.$sample.'_'.$file_name)){
+            $fileName = $sample_name.'_'.$file_name;
+            if(move_uploaded_file($file, $path.'/sps/assets/samples/'.$fileName)){
                 //store in database
+                $sample = array();
                 $sample['sample_name'] = $_POST['record_file'];
-                $sample['sample_file'] = $sample;
+                $sample['sample_file'] = $fileName;
                 $sample['author'] = $this->session->userdata['userid'];
                 $this->db->insert("sample_data", $sample);
             }else{
