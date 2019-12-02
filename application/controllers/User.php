@@ -24,7 +24,12 @@ class User extends CI_Controller {
             $path = $_SERVER['DOCUMENT_ROOT'];
             if(move_uploaded_file($file, $path.'/sps/assets/samples/'.$sample.'_'.$file_name)){
                 //store in database
-
+                $sample['sample_name'] = $_POST['record_file'];
+                $sample['sample_file'] = $sample;
+                $sample['author'] = $this->session->userdata['userid'];
+                $this->db->insert("sample_data", $sample);
+            }else{
+              $data['msg'] = 'File upload failed, please try again';
             }
         }
         $this->load->view("portal/upload", $data);
