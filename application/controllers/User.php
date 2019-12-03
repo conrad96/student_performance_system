@@ -37,7 +37,7 @@ class User extends CI_Controller {
                 $objPHPExcel = PHPExcel_IOFactory::load($excel_file);
                 //iterate all sheets and save data for each sheet
                 $num_sheets = $objPHPExcel->getSheetCount();
-                print '<pre>';
+                
                 for($num = 0; $num < $num_sheets; $num++){
                   $class = $objPHPExcel->getSheet($num)->getCell('A1')->getValue()->__toString();
                   //students
@@ -51,7 +51,7 @@ class User extends CI_Controller {
                   $mot_exam_type = $objPHPExcel->getSheet($num)->getCell('H2')->getValue()->__toString();
                   $eot_exam_type = $objPHPExcel->getSheet($num)->getCell('L2')->getValue()->__toString();
                 }
-                exit();
+
             }else{
               $data['msg'] = 'Error!. File upload failed, please try again';
             }
