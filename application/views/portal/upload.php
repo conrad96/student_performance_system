@@ -25,7 +25,17 @@
               <li><i class="fa fa-upload"></i>Upload</li>
             </ol>
           </div>
-        </div>   
+        </div>
+        <?php
+        if(!empty($msg)){
+          $msgDisp = explode("!.", $msg);
+          print '<div class="row">
+            <div class="col-lg-12">
+              <center><h4 style="color: '.(!empty($msg) && $msgDisp[0] != 'Error'? 'black' : 'red').';">'.$msg.'</h4></center>
+            </div>
+          </div>';
+        }
+        ?>
         <div class="row">
           <div class="col-lg-6">
             <section class="panel">
@@ -37,7 +47,7 @@
                   <div class="form-group">
                     <label for="recordTitle">Record title</label>
                     <input type="text" class="form-control" name="record_file" id="recordTitle" placeholder="Enter Record title">
-                  </div>                  
+                  </div>
                   <div class="form-group">
                     <label for="fileUpload">File upload</label>
                     <input name="recordFile" type="file" id="fileUpload">
@@ -53,12 +63,12 @@
               </div>
             </section>
           </div>
-          
-        </div> 
+
+        </div>
 
       </section>
       <div class="text-right">
-        <div class="credits">          
+        <div class="credits">
           Designed by Athena</a>
         </div>
       </div>
