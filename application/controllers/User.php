@@ -40,6 +40,7 @@ class User extends CI_Controller {
 
                 for($num = 0; $num < $num_sheets; $num++){
                   $class_fields = array();
+                  $term_fields = array();
 
                   $class = $objPHPExcel->getSheet($num)->getCell('A1')->getValue()->__toString();
                   //store class
@@ -47,13 +48,21 @@ class User extends CI_Controller {
                   $class_fields['author'] = $this->session->userdata['userid'];
                   $this->db->insert("class", $class_fields);
                   $class_id = $this->db->insert_id();
+                  //term
+                  $term = $objPHPExcel->getSheet($num)->getCell('H1')->getValue()->__toString();
+                  if(!empty($term)){
+                    $term_fields['term'] = $term;
+                    $term_fields['class_id'] = $class_id;
+                    $term_fields['author'] = $this->session->userdata['userid'];
+                    $this->db->insert("terms", $term_fields);
+                    $term_id = $this->db->insert_id();
+                  }
                   /*
                   //students
                   $student_name = $objPHPExcel->getSheet($num)->getCell('A3')->getValue()->__toString();
                   $student_sex = $objPHPExcel->getSheet($num)->getCell('B4')->getValue()->__toString();
                   $student_reg = $objPHPExcel->getSheet($num)->getCell('C4')->getValue()->__toString();
-                  //term
-                  $term = $objPHPExcel->getSheet($num)->getCell('H1')->getValue()->__toString();
+
                   //exam type
                   $bot_exam_type = $objPHPExcel->getSheet($num)->getCell('D2')->getValue()->__toString();
                   $mot_exam_type = $objPHPExcel->getSheet($num)->getCell('H2')->getValue()->__toString();
