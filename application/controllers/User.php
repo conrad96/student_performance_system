@@ -49,14 +49,28 @@ class User extends CI_Controller {
                   $this->db->insert("class", $class_fields);
                   $class_id = $this->db->insert_id();
                   //term
-                  $term = $objPHPExcel->getSheet($num)->getCell('H1')->getValue()->__toString();
-                  if(!empty($term)){
-                    $term_fields['term'] = $term;
-                    $term_fields['class_id'] = $class_id;
-                    $term_fields['author'] = $this->session->userdata['userid'];
-                    $this->db->insert("terms", $term_fields);
-                    $term_id = $this->db->insert_id();
-                  }
+                  $term_1 = $objPHPExcel->getSheet($num)->getCell('H1')->getValue();
+                  $term_2 = $objPHPExcel->getSheet($num)->getCell('U1')->getValue();
+                  $term_3 = $objPHPExcel->getSheet($num)->getCell('AH1')->getValue();
+                  //insert terms
+                  $terms = array(
+                    array(
+                      "term"=>$term_1,
+                      "class_id"=> $class_id,
+                      "author"=> $this->session->userdata['userid']
+                    ),
+                    array(
+                      "term"=>$term_2,
+                      "class_id"=> $class_id,
+                      "author"=> $this->session->userdata['userid']
+                    ),
+                    array(
+                      "term"=>$term_3,
+                      "class_id"=> $class_id,
+                      "author"=> $this->session->userdata['userid']
+                    )
+                  );
+                  $this->db->insert_batch("terms", $terms);                  
                   /*
                   //students
                   $student_name = $objPHPExcel->getSheet($num)->getCell('A3')->getValue()->__toString();
