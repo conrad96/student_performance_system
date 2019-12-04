@@ -37,21 +37,52 @@ class User extends CI_Controller {
                 $objPHPExcel = PHPExcel_IOFactory::load($excel_file);
                 //iterate all sheets and save data for each sheet
                 $num_sheets = $objPHPExcel->getSheetCount();
-                print '<pre>';
+
                 for($num = 0; $num < $num_sheets; $num++){
+                  $class_fields = array();
+                  $term_fields = array();
+
                   $class = $objPHPExcel->getSheet($num)->getCell('A1')->getValue()->__toString();
+                  //store class
+                  $class_fields['class'] = $class;
+                  $class_fields['author'] = $this->session->userdata['userid'];
+                  $this->db->insert("class", $class_fields);
+                  $class_id = $this->db->insert_id();
+                  //term
+                  $term_1 = $objPHPExcel->getSheet($num)->getCell('H1')->getValue();
+                  $term_2 = $objPHPExcel->getSheet($num)->getCell('U1')->getValue();
+                  $term_3 = $objPHPExcel->getSheet($num)->getCell('AH1')->getValue();
+                  //insert terms
+                  $terms = array(
+                    array(
+                      "term"=>$term_1,
+                      "class_id"=> $class_id,
+                      "author"=> $this->session->userdata['userid']
+                    ),
+                    array(
+                      "term"=>$term_2,
+                      "class_id"=> $class_id,
+                      "author"=> $this->session->userdata['userid']
+                    ),
+                    array(
+                      "term"=>$term_3,
+                      "class_id"=> $class_id,
+                      "author"=> $this->session->userdata['userid']
+                    )
+                  );
+                  $this->db->insert_batch("terms", $terms);                  
+                  /*
                   //students
                   $student_name = $objPHPExcel->getSheet($num)->getCell('A3')->getValue()->__toString();
                   $student_sex = $objPHPExcel->getSheet($num)->getCell('B4')->getValue()->__toString();
                   $student_reg = $objPHPExcel->getSheet($num)->getCell('C4')->getValue()->__toString();
-                  //term
-                  $term = $objPHPExcel->getSheet($num)->getCell('H1')->getValue()->__toString();
+
                   //exam type
                   $bot_exam_type = $objPHPExcel->getSheet($num)->getCell('D2')->getValue()->__toString();
                   $mot_exam_type = $objPHPExcel->getSheet($num)->getCell('H2')->getValue()->__toString();
                   $eot_exam_type = $objPHPExcel->getSheet($num)->getCell('L2')->getValue()->__toString();
+                  */
                 }
-                exit();
             }else{
               $data['msg'] = 'Error!. File upload failed, please try again';
             }
