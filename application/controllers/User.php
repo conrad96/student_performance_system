@@ -40,7 +40,6 @@ class User extends CI_Controller {
 
                 for($num = 0; $num < $num_sheets; $num++){
                   $class_fields = array();
-                  $term_fields = array();
 
                   $class = $objPHPExcel->getSheet($num)->getCell('A1')->getValue()->__toString();
                   //store class
@@ -70,7 +69,13 @@ class User extends CI_Controller {
                       "author"=> $this->session->userdata['userid']
                     )
                   );
-                  $this->db->insert_batch("terms", $terms);                  
+                  $terms_inserted = count($terms);
+                  $this->db->insert_batch("terms", $terms);
+                  $saved_terms_id = $this->db->insert_id();
+                  //term ids
+                  $term_1_id = $saved_terms_id;
+                  $term_2_id = $term_1_id + 1;
+                  $term_3_id = $term_2_id + 1;
                   /*
                   //students
                   $student_name = $objPHPExcel->getSheet($num)->getCell('A3')->getValue()->__toString();
@@ -82,7 +87,7 @@ class User extends CI_Controller {
                   $mot_exam_type = $objPHPExcel->getSheet($num)->getCell('H2')->getValue()->__toString();
                   $eot_exam_type = $objPHPExcel->getSheet($num)->getCell('L2')->getValue()->__toString();
                   */
-                }
+                }exit();
             }else{
               $data['msg'] = 'Error!. File upload failed, please try again';
             }
