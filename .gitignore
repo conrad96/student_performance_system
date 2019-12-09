@@ -1,4 +1,4 @@
-.DS_Store
+assets/samples
 assets/samples/*
 application/cache/*
 !application/cache/index.html
