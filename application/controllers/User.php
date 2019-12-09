@@ -105,12 +105,21 @@ class User extends CI_Controller {
                  //students extract
                  $students = 48;
                  for($stud = 4; $stud < $students; $stud++){
-                     $student_name = $objPHPExcel->getSheet($num)->getCell('A'.$stud)->getValue();
-                     $student_sex = $objPHPExcel->getSheet($num)->getCell('B'.$stud)->getValue();
-                     $student_reg = $objPHPExcel->getSheet($num)->getCell('C'.$stud)->getValue();
-                   //get term and exam type id
+                    $student_name = $objPHPExcel->getSheet($num)->getCell('A'.$stud)->getValue();
+                    $student_sex = $objPHPExcel->getSheet($num)->getCell('B'.$stud)->getValue();
+                    $student_reg = $objPHPExcel->getSheet($num)->getCell('C'.$stud)->getValue();
+                    //save student
+                    $this->db->insert('students', array(
+                      'student'=> $student_name,
+                      'sex'=> $student_sex,
+                      'reg_no'=> $student_reg,
+                      'class_id'=> $class_id,
+                      'author'=> $this->session->userdata['userid']
+                    ));
+                    //get term and exam type id
                    for($type = 0; $type <= $types_count; $type++){
-
+                    //insert students performance for each exam type with id
+                    
                    }
                  }
 
