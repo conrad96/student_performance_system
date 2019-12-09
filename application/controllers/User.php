@@ -103,11 +103,12 @@ class User extends CI_Controller {
                  $exam_type_id = $this->db->insert_id();
 
                  //students extract
-                 $students = 48;
-                 for($stud = 4; $stud < $students; $stud++){
-                    $student_name = $objPHPExcel->getSheet($num)->getCell('A'.$stud)->getValue();
-                    $student_sex = $objPHPExcel->getSheet($num)->getCell('B'.$stud)->getValue();
-                    $student_reg = $objPHPExcel->getSheet($num)->getCell('C'.$stud)->getValue();
+                 $students = 39;
+                 $row = 4;
+                 for($stud = 0; $stud <= $students; $stud++){                    
+                    $student_name = $objPHPExcel->getSheet($num)->getCell('A'.$row)->getValue();
+                    $student_sex = $objPHPExcel->getSheet($num)->getCell('B'.$row)->getValue();
+                    $student_reg = $objPHPExcel->getSheet($num)->getCell('C'.$row)->getValue();
                     //save student
                     $this->db->insert('students', array(
                       'student'=> $student_name,
@@ -116,11 +117,26 @@ class User extends CI_Controller {
                       'class_id'=> $class_id,
                       'author'=> $this->session->userdata['userid']
                     ));
+                    $student_id = $this->db->insert_id();
                     //get term and exam type id
-                   for($type = 0; $type <= $types_count; $type++){
-                    //insert students performance for each exam type with id
-                    
-                   }
+                    //subjects 
+                    //$mtc_bot_t1 = $objPHPExcel->getSheet($num)->getCell('D'.$stud)->getValue();
+
+                  //  for($type = 0; $type < $types_count; $type++){
+                  //   //insert students performance for each exam type with id
+                  //   $this->db->insert('results_tbl', array(
+                  //     'student_id'=> $student_id,
+                  //     'term_id'=> ,
+                  //     'exam_type_id'=> $exam_type_id,
+                  //     'mtc'=>,
+                  //     'eng',
+                  //     'sci',
+                  //     'sst',
+                  //     'author'
+                  //   ));
+                  //   $exam_type_id++;
+                  //  }
+                  $row++;
                  }
 
                 }//exit();
