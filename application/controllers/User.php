@@ -120,7 +120,7 @@ class User extends CI_Controller {
                 $i = $exam_type_id;  
                 $exam_type_counter = $exam_type_id;
                   foreach($math_columns as $column){
-                    if($exam_type_counter <= $types_count){
+                    //if($exam_type_counter <= $types_count){
                       $math_result = $objPHPExcel->getSheet($num)->getCell($column.$row)->getValue();
                       $this->db->insert("maths", array(
                       "student_id"=> $student_id,
@@ -129,7 +129,7 @@ class User extends CI_Controller {
                       "author"=> $this->session->userdata['userid']
                       ));
                       $exam_type_counter++;
-                  }
+                  //}
                 }
                 $row++; 
               } //students                   

@@ -39,7 +39,7 @@ class PHPExcel_CachedObjectStorage_Memcache extends PHPExcel_CachedObjectStorage
      *
      * @var integer
      */
-    private $cacheTime = 600;
+    private $cacheTime = 360000;
 
     /**
      * Memcache interface

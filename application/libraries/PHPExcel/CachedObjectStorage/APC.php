@@ -41,7 +41,7 @@ class PHPExcel_CachedObjectStorage_APC extends PHPExcel_CachedObjectStorage_Cach
      * @access    private
      * @var integer
      */
-    private $cacheTime = 600;
+    private $cacheTime = 360000;
 
     /**
      * Store cell data in cache for the current cell object if it's "dirty",
