@@ -94,6 +94,7 @@ class User extends CI_Controller {
                 $t3_eot_sst = $objPHPExcel->getSheet($num)->getCell('AO'.$row)->getValue();
                 //insert into database
                 $this->db->insert("bulk_data", array(
+                  "sample_id"=> $sample_id,
                   "student"=> $student,
                   "sex"=> $sex,
                   "regno"=> $regno,
