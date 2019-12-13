@@ -161,6 +161,7 @@ class User extends CI_Controller {
     }
     function results(){
       $data['page_title'] = 'Results';
+      $data['samples'] = $this->db->get("sample_data")->result();
       $data['performance'] = $this->db->query("
       SELECT * FROM bulk_data BD 
       ")->result();

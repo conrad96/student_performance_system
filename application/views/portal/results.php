@@ -22,6 +22,24 @@
                     </div>
                     <div class="col-md-3">&nbsp;</div>
                 </div>
+                <div class="row">&nbsp;</div>
+                <div class="row">
+                    <label class="col-md-2" for="term">Uploaded Samples</label>
+                    <div class="col-md-3">
+                        <select name="terms" id="term" class="input-sm form-control">
+                            <option disabled>-Select-</option>
+                           <?php 
+                            if(!empty($samples)){
+                                foreach($samples as $sample){
+                                    print '<option value="'.$sample->id.'">'.$sample->sample_name.' ('.$sample->sample_file.')</option>';
+                                }
+                            }
+                           ?>
+                        </select>
+                        <?php echo (empty($samples)? '<div class="alert alert-danger">No samples uploaded</div>' : '');  ?>
+                    </div>
+                </div>
+                <div class="row">&nbsp;</div>
                 <div class="row">
                     <label class="col-md-2" for="term">Term</label>
                     <div class="col-md-3">
