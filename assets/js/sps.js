@@ -7,5 +7,14 @@ $(document).on('change', "#sample", function(){
     var delay = 5000;
     setTimeout(function(){
         $("#resultsCanvas").show();
+        //
+        $.ajax({
+            type: "POST",
+            url: getBaseURL + 'index.php/User/filter',
+            data: {'field': 'BD.sample_id', 'value': newSample},
+            success: function(data){
+                $("#resultsCanvas").html(data);
+            }
+        });
     }, delay);
 });

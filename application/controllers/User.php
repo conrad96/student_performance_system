@@ -172,6 +172,15 @@ class User extends CI_Controller {
       $data['performance'] = $this->db->query("SELECT * FROM bulk_data BD WHERE BD.sample_id IN (".implode(",", $sample_ids).") ")->result();
       $this->load->view("portal/results", $data);
     }
+    function filter(){
+      $data = array();
+        if(!empty($_POST)){
+          $sql = "SELECT * FROM bulk_data BD WHERE ";
+          $sql .= " ".$_POST['field']." = ".$_POST['value'];
+          $data['performance'] = $this->db->query($sql)->result();
+        }
+        $this->load->view("portal/datatable", $data);
+    }
     function logout(){
         $this->session->sess_destroy();
         redirect("Login/index");

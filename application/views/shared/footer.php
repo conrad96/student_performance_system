@@ -43,6 +43,7 @@
     <script src="<?php  echo base_url(); ?>assets/js/sps.js"></script>
     <script>
     $('#student-table').DataTable();
+    $("#performanceTable").DataTable();
 
       //knob
       $(function() {
