@@ -64,7 +64,8 @@
                     </div>
                 </div>
             </div>
-        </div>       
+        </div>  
+        <?php if(!empty($samples)){?>     
         <div class="row">
         <!-- datatable -->
           <div class="col-md-12">
@@ -108,7 +109,11 @@
           ?>            
           </div>
         <div>
-        
+        <?php }else{
+            print '<div class="col-md-12">
+            <h3 class="alert alert-danger">No records found.</h3>
+            </div>';
+        } ?>
         </div>
         </div>
         
