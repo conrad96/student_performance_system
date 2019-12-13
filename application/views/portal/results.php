@@ -66,7 +66,7 @@
             </div>
         </div>  
         <?php if(!empty($samples)){?>     
-        <div class="row">
+        <div class="row" id="resultsCanvas">
         <!-- datatable -->
           <div class="col-md-12">
           <?php 
