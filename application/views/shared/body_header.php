@@ -4,7 +4,7 @@
       </div>
 
       <!--logo start-->
-      <a href="index.html" class="logo">Performance <span class="lite">Analyser</span></a>
+      <a href="<?php echo base_url(); ?>index.php/User/index" class="logo">Performance <span class="lite">Analyser</span></a>
       <!--logo end-->
 
       <div class="nav search-row" id="top_menu">
