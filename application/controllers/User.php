@@ -40,7 +40,7 @@ class User extends CI_Controller {
             $objPHPExcel = PHPExcel_IOFactory::load($excel_file);
             //iterate all sheets and save data for each sheet
             $num_sheets = $objPHPExcel->getSheetCount();
-            
+            $status = null;
             for($num = 0; $num < $num_sheets; $num++){
               $counter_max = 40;
               $row = 4;
@@ -96,7 +96,7 @@ class User extends CI_Controller {
                 $t3_eot_sci = $objPHPExcel->getSheet($num)->getCell('AN'.$row)->getValue();
                 $t3_eot_sst = $objPHPExcel->getSheet($num)->getCell('AO'.$row)->getValue();
                 //insert into database
-                $this->db->insert("bulk_data", array(
+                $status = $this->db->insert("bulk_data", array(
                   "sample_id"=> $sample_id,
                   "student"=> $student,
                   "sex"=> $sex,
@@ -148,6 +148,7 @@ class User extends CI_Controller {
           }//move_uploaded_file
             
         }
+        $data['msg'] = ($status != null)? "success__Upload successfully. <a href='".base_url()."index.php/User/index'>Lookup students records here... </a>" : "danger__Upload failed";
         
         $this->load->view("portal/upload", $data);
     }

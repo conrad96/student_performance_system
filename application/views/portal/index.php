@@ -62,6 +62,10 @@
           </div>
           
         </div>
+        <!-- datatable showing students -->
+        <div class="row">
+          
+        </div>
         
       </section>
       <div class="text-right">
