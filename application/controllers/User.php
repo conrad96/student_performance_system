@@ -159,6 +159,13 @@ class User extends CI_Controller {
     function history(){
         $this->load->view("portal/history");
     }
+    function results(){
+      $data['page_title'] = 'Results';
+      $data['performance'] = $this->db->query("
+      SELECT * FROM bulk_data BD 
+      ")->result();
+      $this->load->view("portal/results", $data);
+    }
     function logout(){
         $this->session->sess_destroy();
         redirect("Login/index");
