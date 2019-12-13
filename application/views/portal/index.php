@@ -30,24 +30,24 @@
           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
             <div class="info-box blue-bg">
               <i class="fa fa-cloud-download"></i>
-              <div class="count">0</div>
+              <div class="count"><?php echo number_format($samples); ?></div>
               <div class="title">Samples</div>
             </div>            
           </div>
 
           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
             <div class="info-box brown-bg">
-              <i class="fa fa-shopping-cart"></i>
-              <div class="count">0</div>
+              <i class="fa fa-group"></i>
+              <div class="count"><?php echo number_format($students); ?></div>
               <div class="title">Students</div>
             </div>            
           </div>          
 
           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
             <div class="info-box dark-bg">
-              <i class="fa fa-thumbs-o-up"></i>
-              <div class="count">0</div>
-              <div class="title">Operations</div>
+              <i class="fa fa-user"></i>
+              <div class="count"><?php echo number_format($users); ?></div>
+              <div class="title">Users</div>
             </div>
             <!--/.info-box-->
           </div>          
