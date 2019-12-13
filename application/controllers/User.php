@@ -162,9 +162,14 @@ class User extends CI_Controller {
     function results(){
       $data['page_title'] = 'Results';
       $data['samples'] = $this->db->get("sample_data")->result();
-      $data['performance'] = $this->db->query("
-      SELECT * FROM bulk_data BD 
-      ")->result();
+      //use first sample data record
+      $sample_ids = array();
+      if(!empty($data['samples'])){
+        foreach($data['samples'] as $sample){
+          array_push($sample_ids, $sample->id); 
+        }
+      }
+      $data['performance'] = $this->db->query("SELECT * FROM bulk_data BD WHERE BD.sample_id IN (".implode(",", $sample_ids).") ")->result();
       $this->load->view("portal/results", $data);
     }
     function logout(){
