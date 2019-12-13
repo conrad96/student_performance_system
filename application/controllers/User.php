@@ -13,6 +13,10 @@ class User extends CI_Controller {
         $data['samples'] = $this->db->get("sample_data")->num_rows();
         $data['students'] = $this->db->get("bulk_data")->num_rows();
         $data['users'] = $this->db->get("users")->num_rows();
+        $data['results'] = $this->db->query("
+        SELECT BD.student, BD.sex, BD.regno, BD.class
+        FROM bulk_data BD        
+        ")->result();
         $this->load->view("portal/index", $data);
     }
     function upload(){

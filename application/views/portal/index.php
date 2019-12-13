@@ -1,5 +1,4 @@
 <?php $this->load->view("shared/header", array("page_title"=> $page_title)); ?>
-
 <body>
   <!-- container section start -->
   <section id="container" class="">
@@ -62,31 +61,46 @@
           </div>
           
         </div>
-        <!-- datatable showing students -->
+        <!-- datatable showing students -->        
         <div class="row">
-          <!-- results -->           
-          <div class="col-md-5">
-            <h3><label class="col-md-2" for="term">Term</label></h3>
-            <div class="col-md-3">
-              <select class="input-lgm-bot15 form-control" name="term" id="term">
-                <option disabled >-Select-</option>
-                <option selected>Term 1</option>
-                <option>Term 2</option>
-                <option>Term 3</option>
-              </select>
-            </div>
+        <!-- datatable -->
+          <div class="col-md-12">
+          <?php 
+          if(!empty($results)){
+            ?>
+            <table id="student-table" class="display" style="width:100%;">
+              <thead>
+                <tr>
+                  <td>Student</td>
+                  <td>Sex</td>
+                  <td>Regno</td>
+                  <td>Class</td>
+                </tr>
+              </thead>
+              <tbody>
+                <?php 
+                  foreach($results as $result){
+                    print '<tr>'. 
+                          '<td>'.$result->student.'</td>'.
+                          '<td>'.$result->sex.'</td>'.
+                          '<td>'.$result->regno.'</td>'.
+                          '<td>'.$result->class.'</td>'. 
+                          '</tr>';
+                  }
+                ?>
+              </tbody>
+            </table>
+            <?php 
+          }else{
+            print '<div class="col-md-12">
+            <h3 class="alert alert-danger">No records found.</h3>
+            </div>';
+          }
+          ?>            
           </div>
-          <div class="col-md-5">
-          <h3><label class="col-md-2" for="term">Exam</label></h3>
-          <div class="col-md-3">
-              <select class="input-lgm-bot15 form-control" name="term" id="term">
-                <option disabled >-Select-</option>
-                <option selected>BOT</option>
-                <option>MOT</option>
-                <option>EOT</option>
-              </select>
-            </div>
-          </div>
+        <div>
+        
+        </div>
         </div>
         
       </section>
