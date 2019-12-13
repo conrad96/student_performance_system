@@ -15,6 +15,7 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">
+              <li><a class="" href="<?php echo base_url(); ?>index.php/User/results">Results</a></li>
               <li><a class="" href="<?php echo base_url(); ?>index.php/User/upload">Upload data</a></li>
               <li><a class="" href="<?php echo base_url(); ?>index.php/User/history">History</a></li>
             </ul>
