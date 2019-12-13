@@ -57,9 +57,12 @@
               <thead>
                 <tr>
                   <td>Student</td>
-                  <td>Sex</td>
-                  <td>Regno</td>
-                  <td>Class</td>
+                  <td>TERM</td>
+                  <td>EXAM</td>
+                  <td>MTC</td>
+                  <td>ENG</td>
+                  <td>SCI</td>
+                  <td>SST</td>
                 </tr>
               </thead>
               <tbody>
@@ -67,9 +70,12 @@
                   foreach($performance as $result){
                     print '<tr>'. 
                           '<td>'.$result->student.'</td>'.
-                          '<td>'.$result->sex.'</td>'.
-                          '<td>'.$result->regno.'</td>'.
-                          '<td>'.$result->class.'</td>'. 
+                          '<td>TERM 1</td>'.
+                          '<td>BOT</td>'.
+                          '<td>'.$result->t1_bot_mtc.'</td>'. 
+                          '<td>'.$result->t1_bot_eng.'</td>'. 
+                          '<td>'.$result->t1_bot_sci.'</td>'. 
+                          '<td>'.$result->t1_bot_sst.'</td>'. 
                           '</tr>';
                   }
                 ?>
