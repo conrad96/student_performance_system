@@ -45,9 +45,9 @@
                     <div class="col-md-3">
                         <select name="terms" id="term" class="input-sm form-control">
                             <option disabled>-Select-</option>
-                            <option>Term 1</option>
-                            <option>Term 2</option>
-                            <option>Term 3</option>
+                            <option value="t1">Term 1</option>
+                            <option value="t2">Term 2</option>
+                            <option value="t3">Term 3</option>
                         </select>
                     </div>
                 </div>
@@ -57,19 +57,20 @@
                     <div class="col-md-3">
                         <select name="exam" id="exam" class="input-sm form-control">
                             <option disabled>-Select-</option>
-                            <option>BOT</option>
-                            <option>MOT</option>
-                            <option>EOT</option>
+                            <option value="bot">BOT</option>
+                            <option value="mot">MOT</option>
+                            <option value="eot">EOT</option>
                         </select>
                     </div>
                 </div>
-            </div>
+            </div>           
         </div>  
+        <div class="row">&nbsp;</div>
         <?php if(!empty($samples)){?>     
         <div class="row" id="resultsCanvas">
         <!-- datatable -->
           <?php 
-            $this->load->view("portal/datatable", array("performance"=> $performance));
+            $this->load->view("portal/datatable", array("performance"=> $performance, "examtype"=> $examtype, "term"=> $term));
           ?>
         <div>
         <?php }else{

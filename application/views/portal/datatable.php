@@ -16,15 +16,24 @@
               </thead>
               <tbody>
                 <?php 
+                    //get return fields
+                    $type = $examtype;
+                    $term_title = $term['title'];
+                    $term_type = $term['type'];
+                    $obj_mtc = $term_type.'_'.strtolower($type).'_mtc';
+                    $obj_eng = $term_type.'_'.strtolower($type).'_eng';
+                    $obj_sci = $term_type.'_'.strtolower($type).'_sci';
+                    $obj_sst= $term_type.'_'.strtolower($type).'_sst';                    
+
                   foreach($performance as $result){
                     print '<tr>'. 
                           '<td>'.$result->student.'</td>'.
-                          '<td>TERM 1</td>'.
-                          '<td>BOT</td>'.
-                          '<td>'.$result->t1_bot_mtc.'</td>'. 
-                          '<td>'.$result->t1_bot_eng.'</td>'. 
-                          '<td>'.$result->t1_bot_sci.'</td>'. 
-                          '<td>'.$result->t1_bot_sst.'</td>'. 
+                          '<td>'.$type.'</td>'.
+                          '<td>'.$term_title.'</td>'.
+                          '<td>'.(!empty($obj_mtc)? $obj_mtc : '').'</td>'. 
+                          '<td>'.$obj_eng.'</td>'. 
+                          '<td>'.$obj_sci.'</td>'. 
+                          '<td>'.$obj_sst.'</td>'. 
                           '</tr>';
                   }
                 ?>

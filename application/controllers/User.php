@@ -169,11 +169,20 @@ class User extends CI_Controller {
           array_push($sample_ids, $sample->id); 
         }
       }
-      $data['performance'] = $this->db->query("SELECT * FROM bulk_data BD WHERE BD.sample_id IN (".implode(",", $sample_ids).") ")->result();
+      $data['examtype'] = 'BOT';
+      $data['term'] = array('title'=>'Term 1', 'type'=> 't1');
+      $data['performance'] = $this->db->query("SELECT 
+      BD.student, 
+      BD.".$data['term']['type']."_".strtolower($data['examtype'])."_mtc, 
+      BD.".$data['term']['type']."_".strtolower($data['examtype'])."_eng,
+      BD.".$data['term']['type']."_".strtolower($data['examtype'])."_sci,
+      BD.".$data['term']['type']."_".strtolower($data['examtype'])."_sst
+      FROM bulk_data BD WHERE BD.sample_id IN (".implode(",", $sample_ids).") ")->result();
       $this->load->view("portal/results", $data);
     }
     function filter(){
-      $data = array();
+      $data = array();      
+      //exit(print_r($_POST));
         if(!empty($_POST)){
           $sql = "SELECT * FROM bulk_data BD WHERE ";
           $sql .= " ".$_POST['field']." = ".$_POST['value'];
