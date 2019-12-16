@@ -171,24 +171,45 @@ class User extends CI_Controller {
       }
       $data['examtype'] = 'BOT';
       $data['term'] = array('title'=>'Term 1', 'type'=> 't1');
-      $data['performance'] = $this->db->query("SELECT 
+      $data['performance'] = $this->db->query("SELECT BD.id, BD.sample_id,
       BD.student, 
       BD.".$data['term']['type']."_".strtolower($data['examtype'])."_mtc, 
       BD.".$data['term']['type']."_".strtolower($data['examtype'])."_eng,
       BD.".$data['term']['type']."_".strtolower($data['examtype'])."_sci,
       BD.".$data['term']['type']."_".strtolower($data['examtype'])."_sst
-      FROM bulk_data BD WHERE BD.sample_id IN (".implode(",", $sample_ids).") ")->result();
+      FROM bulk_data BD WHERE BD.sample_id IN (".implode(",", $sample_ids).") ")->result_array();
       $this->load->view("portal/results", $data);
     }
     function filter(){
-      $data = array();      
-      //exit(print_r($_POST));
-        if(!empty($_POST)){
-          $sql = "SELECT * FROM bulk_data BD WHERE ";
-          $sql .= " ".$_POST['field']." = ".$_POST['value'];
-          $data['performance'] = $this->db->query($sql)->result();
-        }
+      $data = array();            
+        if(!empty($_POST)){          
+          $sql = "SELECT  BD.id, BD.student, BD.sample_id, ". 
+           $_POST['field']."_mtc, ".
+           $_POST['field']."_eng, ".
+           $_POST['field']."_sci, ".
+           $_POST['field']."_sst ".
+           "FROM bulk_data BD WHERE BD.sample_id = '".$_POST['sampleId']."' ";
+          $data['examtype'] = strtoupper($_POST['examType']);
+
+          if($_POST['term'] == 't1'){
+            $data['term'] = 'Term 1';
+            $data['termtype'] = 't1';
+          }else
+          if($_POST['term'] == 't2'){
+            $data['term'] = 'Term 2';
+            $data['termtype'] = 't2';
+          }else
+          if($_POST['term'] == 't3'){
+            $data['term'] = 'Term 3';
+            $data['termtype'] = 't3';
+          }
+          $data['performance'] = $this->db->query($sql)->result_array();          
+        }      
         $this->load->view("portal/datatable", $data);
+    }
+    function student($student_id, $sample_id){
+      $get_student = $this->db->query("SELECT * FROM bulk_data BD WHERE BD.id = '".$student_id."' AND BD.sample_id = '".$sample_id."' ")->result();
+      print_r($get_student);
     }
     function logout(){
         $this->session->sess_destroy();

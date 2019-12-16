@@ -26,7 +26,7 @@
                 <div class="row">
                     <label class="col-md-2" for="sample">Uploaded Samples</label>
                     <div class="col-md-3">
-                        <select name="terms" id="sample" class="input-sm form-control">
+                        <select name="sample" id="sample" class="input-sm form-control">
                             <option disabled>-Select-</option>
                            <?php 
                             if(!empty($samples)){
@@ -70,7 +70,10 @@
         <div class="row" id="resultsCanvas">
         <!-- datatable -->
           <?php 
-            $this->load->view("portal/datatable", array("performance"=> $performance, "examtype"=> $examtype, "term"=> $term));
+            $this->load->view("portal/datatable", array(
+                "performance"=> $performance, 
+                "examtype"=> $examtype, 
+                "term"=> $term));
           ?>
         <div>
         <?php }else{

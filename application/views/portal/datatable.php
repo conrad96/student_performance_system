@@ -17,25 +17,25 @@
               <tbody>
                 <?php 
                     //get return fields
-                    $type = $examtype;
-                    $term_title = $term['title'];
-                    $term_type = $term['type'];
+                    $type = $examtype;                    
+                    $term_title = (empty($term['title'])? $term : $term['title']);
+                    $term_type = (empty($term['type'])? $termtype : $term['type']);
                     $obj_mtc = $term_type.'_'.strtolower($type).'_mtc';
                     $obj_eng = $term_type.'_'.strtolower($type).'_eng';
                     $obj_sci = $term_type.'_'.strtolower($type).'_sci';
                     $obj_sst= $term_type.'_'.strtolower($type).'_sst';                    
-
-                  foreach($performance as $result){
-                    print '<tr>'. 
-                          '<td>'.$result->student.'</td>'.
-                          '<td>'.$type.'</td>'.
+                            
+                    for($i = 0; $i <= 1399; $i++ ){
+                      print '<tr>'. 
+                          '<td><a href="'.base_url().'index.php/User/student/'.$performance[$i]['id'].'/'.$performance[$i]['sample_id'].'">'.$performance[$i]['student'].'</a></td>'.
                           '<td>'.$term_title.'</td>'.
-                          '<td>'.(!empty($obj_mtc)? $obj_mtc : '').'</td>'. 
-                          '<td>'.$obj_eng.'</td>'. 
-                          '<td>'.$obj_sci.'</td>'. 
-                          '<td>'.$obj_sst.'</td>'. 
-                          '</tr>';
-                  }
+                          '<td>'.$type.'</td>'.
+                          '<td>'.$performance[$i][ $obj_mtc].'</td>'. 
+                          '<td>'.$performance[$i][ $obj_eng].'</td>'. 
+                          '<td>'.$performance[$i][ $obj_sci].'</td>'. 
+                          '<td>'.$performance[$i][ $obj_sst].'</td>'. 
+                          '</tr>'; 
+                    }                  
                 ?>
               </tbody>
             </table>
