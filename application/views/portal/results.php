@@ -70,7 +70,10 @@
         <div class="row" id="resultsCanvas">
         <!-- datatable -->
           <?php 
-            $this->load->view("portal/datatable", array("performance"=> $performance, "examtype"=> $examtype, "term"=> $term));
+            $this->load->view("portal/datatable", array(
+                "performance"=> $performance, 
+                "examtype"=> $examtype, 
+                "term"=> $term));
           ?>
         <div>
         <?php }else{

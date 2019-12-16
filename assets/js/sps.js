@@ -25,7 +25,7 @@ $(document).on('change', '#term', function(){
     $.ajax({
         type: "POST",
         url: getBaseURL + 'index.php/User/filter',
-        data: {'field': 'BD.'+newTerm+'_'+examValue, 'value': newTerm, 'sampleId': sampleId},
+        data: {'field': 'BD.'+newTerm+'_'+examValue, 'examType': examValue, 'term': newTerm, 'sampleId': sampleId},
         success: function(data){
             $("#resultsCanvas").html(data);
         },

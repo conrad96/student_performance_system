@@ -181,18 +181,27 @@ class User extends CI_Controller {
       $this->load->view("portal/results", $data);
     }
     function filter(){
-      $data = array();      
-      //(print_r($_POST));
-        if(!empty($_POST)){
+      $data = array();            
+        if(!empty($_POST)){          
           $sql = "SELECT ". 
            $_POST['field']."_mtc, ".
            $_POST['field']."_eng, ".
            $_POST['field']."_sci, ".
            $_POST['field']."_sst ".
            "FROM bulk_data BD WHERE BD.sample_id = '".$_POST['sampleId']."' ";
-          
-          $data['performance'] = $this->db->query($sql)->result();
-        }
+          $data['examtype'] = strtoupper($_POST['examType']);
+
+          if($_POST['term'] == 't1'){
+            $data['term'] = 'Term 1';
+          }else
+          if($_POST['term'] == 't2'){
+            $data['term'] = 'Term 2';
+          }else
+          if($_POST['term'] == 't3'){
+            $data['term'] = 'Term 3';
+          }
+          $data['performance'] = $this->db->query($sql)->result();          
+        }      
         $this->load->view("portal/datatable", $data);
     }
     function logout(){
