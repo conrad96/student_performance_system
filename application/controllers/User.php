@@ -183,7 +183,7 @@ class User extends CI_Controller {
     function filter(){
       $data = array();            
         if(!empty($_POST)){          
-          $sql = "SELECT ". 
+          $sql = "SELECT  BD.student, ". 
            $_POST['field']."_mtc, ".
            $_POST['field']."_eng, ".
            $_POST['field']."_sci, ".

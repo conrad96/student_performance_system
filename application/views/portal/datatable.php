@@ -18,8 +18,8 @@
                 <?php 
                     //get return fields
                     $type = $examtype;
-                    $term_title = $term['title'];
-                    $term_type = $term['type'];
+                    $term_title = (empty($term['title'])? $term : $term['title']);
+                    $term_type = (empty($term['type'])? $examtype : $term['type']);
                     $obj_mtc = $term_type.'_'.strtolower($type).'_mtc';
                     $obj_eng = $term_type.'_'.strtolower($type).'_eng';
                     $obj_sci = $term_type.'_'.strtolower($type).'_sci';
