@@ -171,7 +171,7 @@ class User extends CI_Controller {
       }
       $data['examtype'] = 'BOT';
       $data['term'] = array('title'=>'Term 1', 'type'=> 't1');
-      $data['performance'] = $this->db->query("SELECT 
+      $data['performance'] = $this->db->query("SELECT BD.id, BD.sample_id,
       BD.student, 
       BD.".$data['term']['type']."_".strtolower($data['examtype'])."_mtc, 
       BD.".$data['term']['type']."_".strtolower($data['examtype'])."_eng,
@@ -183,7 +183,7 @@ class User extends CI_Controller {
     function filter(){
       $data = array();            
         if(!empty($_POST)){          
-          $sql = "SELECT  BD.student, ". 
+          $sql = "SELECT  BD.id, BD.student, BD.sample_id, ". 
            $_POST['field']."_mtc, ".
            $_POST['field']."_eng, ".
            $_POST['field']."_sci, ".
@@ -206,6 +206,10 @@ class User extends CI_Controller {
           $data['performance'] = $this->db->query($sql)->result_array();          
         }      
         $this->load->view("portal/datatable", $data);
+    }
+    function student($student_id, $sample_id){
+      $get_student = $this->db->query("SELECT * FROM bulk_data BD WHERE BD.id = '".$student_id."' AND BD.sample_id = '".$sample_id."' ")->result();
+      print_r($get_student);
     }
     function logout(){
         $this->session->sess_destroy();

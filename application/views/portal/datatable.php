@@ -17,7 +17,7 @@
               <tbody>
                 <?php 
                     //get return fields
-                    $type = $examtype;
+                    $type = $examtype;                    
                     $term_title = (empty($term['title'])? $term : $term['title']);
                     $term_type = (empty($term['type'])? $termtype : $term['type']);
                     $obj_mtc = $term_type.'_'.strtolower($type).'_mtc';
@@ -27,7 +27,7 @@
                             
                     for($i = 0; $i <= 1399; $i++ ){
                       print '<tr>'. 
-                          '<td>'.$performance[$i]['student'].'</td>'.
+                          '<td><a href="'.base_url().'index.php/User/student/'.$performance[$i]['id'].'/'.$performance[$i]['sample_id'].'">'.$performance[$i]['student'].'</a></td>'.
                           '<td>'.$term_title.'</td>'.
                           '<td>'.$type.'</td>'.
                           '<td>'.$performance[$i][ $obj_mtc].'</td>'. 
