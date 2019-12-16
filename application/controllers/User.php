@@ -184,8 +184,12 @@ class User extends CI_Controller {
       $data = array();      
       //exit(print_r($_POST));
         if(!empty($_POST)){
-          $sql = "SELECT * FROM bulk_data BD WHERE ";
-          $sql .= " ".$_POST['field']." = ".$_POST['value'];
+          $sql = "SELECT ". 
+          $sql .= $_POST['field']."_mtc, ".
+          $sql .= $_POST['field']."_eng, ".
+          $sql .= $_POST['field']."_sci, ".
+          $sql .= $_POST['field']."_sst, ".
+          $sql .= "FROM bulk_data BD WHERE BD.sample_id = '".$_POST['sampleId']."' ";
           $data['performance'] = $this->db->query($sql)->result();
         }
         $this->load->view("portal/datatable", $data);

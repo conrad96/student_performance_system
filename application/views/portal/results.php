@@ -26,7 +26,7 @@
                 <div class="row">
                     <label class="col-md-2" for="sample">Uploaded Samples</label>
                     <div class="col-md-3">
-                        <select name="terms" id="sample" class="input-sm form-control">
+                        <select name="sample" id="sample" class="input-sm form-control">
                             <option disabled>-Select-</option>
                            <?php 
                             if(!empty($samples)){

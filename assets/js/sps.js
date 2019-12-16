@@ -19,12 +19,13 @@ $(document).on('change', "#sample", function(){
 $(document).on('change', '#term', function(){
     var newTerm = $("#term").val();
     var examValue = $("#exam").val();
+    var sampleId = $("#sample").val();
 
     var getBaseURL = $("#getBaseURL").val();
     $.ajax({
         type: "POST",
         url: getBaseURL + 'index.php/User/filter',
-        data: {'field': 'BD.'+newTerm+'_'+examValue, 'value': newTerm},
+        data: {'field': 'BD.'+newTerm+'_'+examValue, 'value': newTerm, 'sampleId': sampleId},
         success: function(data){
             $("#resultsCanvas").html(data);
         },
