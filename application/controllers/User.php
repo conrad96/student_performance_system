@@ -177,7 +177,7 @@ class User extends CI_Controller {
       BD.".$data['term']['type']."_".strtolower($data['examtype'])."_eng,
       BD.".$data['term']['type']."_".strtolower($data['examtype'])."_sci,
       BD.".$data['term']['type']."_".strtolower($data['examtype'])."_sst
-      FROM bulk_data BD WHERE BD.sample_id IN (".implode(",", $sample_ids).") ")->result();
+      FROM bulk_data BD WHERE BD.sample_id IN (".implode(",", $sample_ids).") ")->result_array();
       $this->load->view("portal/results", $data);
     }
     function filter(){
@@ -193,14 +193,17 @@ class User extends CI_Controller {
 
           if($_POST['term'] == 't1'){
             $data['term'] = 'Term 1';
+            $data['termtype'] = 't1';
           }else
           if($_POST['term'] == 't2'){
             $data['term'] = 'Term 2';
+            $data['termtype'] = 't2';
           }else
           if($_POST['term'] == 't3'){
             $data['term'] = 'Term 3';
+            $data['termtype'] = 't3';
           }
-          $data['performance'] = $this->db->query($sql)->result();          
+          $data['performance'] = $this->db->query($sql)->result_array();          
         }      
         $this->load->view("portal/datatable", $data);
     }

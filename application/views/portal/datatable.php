@@ -19,23 +19,23 @@
                     //get return fields
                     $type = $examtype;
                     $term_title = (empty($term['title'])? $term : $term['title']);
-                    $term_type = (empty($term['type'])? $examtype : $term['type']);
+                    $term_type = (empty($term['type'])? $termtype : $term['type']);
                     $obj_mtc = $term_type.'_'.strtolower($type).'_mtc';
                     $obj_eng = $term_type.'_'.strtolower($type).'_eng';
                     $obj_sci = $term_type.'_'.strtolower($type).'_sci';
                     $obj_sst= $term_type.'_'.strtolower($type).'_sst';                    
-
-                  foreach($performance as $result){
-                    print '<tr>'. 
-                          '<td>'.$result->student.'</td>'.
-                          '<td>'.$type.'</td>'.
+                            
+                    for($i = 0; $i <= 1399; $i++ ){
+                      print '<tr>'. 
+                          '<td>'.$performance[$i]['student'].'</td>'.
                           '<td>'.$term_title.'</td>'.
-                          '<td>'.(!empty($obj_mtc)? $obj_mtc : '').'</td>'. 
-                          '<td>'.$obj_eng.'</td>'. 
-                          '<td>'.$obj_sci.'</td>'. 
-                          '<td>'.$obj_sst.'</td>'. 
-                          '</tr>';
-                  }
+                          '<td>'.$type.'</td>'.
+                          '<td>'.$performance[$i][ $obj_mtc].'</td>'. 
+                          '<td>'.$performance[$i][ $obj_eng].'</td>'. 
+                          '<td>'.$performance[$i][ $obj_sci].'</td>'. 
+                          '<td>'.$performance[$i][ $obj_sst].'</td>'. 
+                          '</tr>'; 
+                    }                  
                 ?>
               </tbody>
             </table>
