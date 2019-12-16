@@ -182,14 +182,15 @@ class User extends CI_Controller {
     }
     function filter(){
       $data = array();      
-      //exit(print_r($_POST));
+      //(print_r($_POST));
         if(!empty($_POST)){
           $sql = "SELECT ". 
-          $sql .= $_POST['field']."_mtc, ".
-          $sql .= $_POST['field']."_eng, ".
-          $sql .= $_POST['field']."_sci, ".
-          $sql .= $_POST['field']."_sst, ".
-          $sql .= "FROM bulk_data BD WHERE BD.sample_id = '".$_POST['sampleId']."' ";
+           $_POST['field']."_mtc, ".
+           $_POST['field']."_eng, ".
+           $_POST['field']."_sci, ".
+           $_POST['field']."_sst ".
+           "FROM bulk_data BD WHERE BD.sample_id = '".$_POST['sampleId']."' ";
+          
           $data['performance'] = $this->db->query($sql)->result();
         }
         $this->load->view("portal/datatable", $data);
