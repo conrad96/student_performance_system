@@ -22,11 +22,30 @@
               <li><i class="fa fa-list-alt"></i><a href="<?php echo base_url(); ?>index.php/User/student/<?php echo $student_id; ?>/<?php echo $sample_id; ?>">Analytics</a></li>
             </ol>
           </div>
-        </div>         
+        </div>  
+        <div class="row">
+           <div class="col-md-4">
+              <ul class="list-group">
+                <?php if(!empty($student)){ 
+                  foreach($student as $stud){
+                    ?>
+                    <li class="list-group-item">Name: <b><?php echo $stud->student; ?></b></li>
+                    <li class="list-group-item">Sex: <b><?php echo $stud->sex; ?></b></li>
+                    <li class="list-group-item">Regno: <b><?php echo $stud->regno; ?></b></li>
+                    <li class="list-group-item">Class: <b><?php echo $stud->class; ?></b></li>
+                    <?php 
+                  }
+                  ?>
+                <?php } ?>
+              </ul>
+           </div>
+            <!-- <pre>
+                <?php //print_r($student); ?>
+            </pre> -->
+        </div>       
       </section>
       <div class="text-right">
-        <div class="credits">
-        
+        <div class="credits">        
           Designed by Athena</a>
         </div>
       </div>
@@ -36,3 +55,4 @@
   <!-- container section start -->
 
 <?php $this->load->view("shared/footer"); ?>
+<script src="<?php echo base_url(); ?>assets/js/canvasjs.min.js"></script>
