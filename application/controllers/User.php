@@ -209,6 +209,8 @@ class User extends CI_Controller {
     }
     function student($student_id, $sample_id){
       $data['page_title'] = 'Analysis';
+      $data['student_id'] = $student_id;
+      $data['sample_id'] = $sample_id;
       $data['student'] = $this->db->query("SELECT * FROM bulk_data BD WHERE BD.id = '".$student_id."' AND BD.sample_id = '".$sample_id."' ")->result();
       $this->load->view("portal/student", $data);
     }
