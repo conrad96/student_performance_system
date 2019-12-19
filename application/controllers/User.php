@@ -208,8 +208,9 @@ class User extends CI_Controller {
         $this->load->view("portal/datatable", $data);
     }
     function student($student_id, $sample_id){
-      $get_student = $this->db->query("SELECT * FROM bulk_data BD WHERE BD.id = '".$student_id."' AND BD.sample_id = '".$sample_id."' ")->result();
-      print_r($get_student);
+      $data['page_title'] = 'Analysis';
+      $data['student'] = $this->db->query("SELECT * FROM bulk_data BD WHERE BD.id = '".$student_id."' AND BD.sample_id = '".$sample_id."' ")->result();
+      $this->load->view("portal/student", $data);
     }
     function logout(){
         $this->session->sess_destroy();
