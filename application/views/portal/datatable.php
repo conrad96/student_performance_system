@@ -27,7 +27,7 @@
                             
                     for($i = 0; $i <= 1399; $i++ ){
                       print '<tr>'. 
-                          '<td><a href="'.base_url().'index.php/User/student/'.$performance[$i]['id'].'/'.$performance[$i]['sample_id'].'">'.$performance[$i]['student'].'</a></td>'.
+                          '<td><a href="'.base_url().'index.php/User/student/'.$term_type.'/'.strtolower($type).'/'.$performance[$i]['id'].'/'.$performance[$i]['sample_id'].'">'.$performance[$i]['student'].'</a></td>'.
                           '<td>'.$term_title.'</td>'.
                           '<td>'.$type.'</td>'.
                           '<td>'.$performance[$i][ $obj_mtc].'</td>'. 

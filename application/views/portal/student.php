@@ -43,14 +43,12 @@
           <div class="col-md-4">
               <ul class="list-group">
               <li class="list-group-item">Record: <b>Yearly:&nbsp;&nbsp;<input type="checkbox" value="yearly" name="yearly" id="yearly" /></b>&nbsp;<b>Termly: &nbsp;&nbsp;<input type="checkbox" value="termly" name="termly" id="termly" checked="checked" /></b></li>
-                  <li class="list-group-item">Term: <b></b></li>
-                  <li class="list-group-item">Exam: <b></b></li>
-                  <li class="list-group-item">Subject: <b></b></li>
+                  <li class="list-group-item">Term: &nbsp;&nbsp;<b><?php echo $term_title; ?></b></li>
+                  <li class="list-group-item">Exam: &nbsp;&nbsp;<b></b></li>
+                  <li class="list-group-item">Subject: &nbsp;&nbsp;<b></b></li>
               </ul>
           </div>
-            <!-- <pre>
-                <?php //print_r($student); ?>
-            </pre> -->
+            
         </div>
         <div class="row">
         

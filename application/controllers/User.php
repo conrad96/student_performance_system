@@ -207,11 +207,25 @@ class User extends CI_Controller {
         }      
         $this->load->view("portal/datatable", $data);
     }
-    function student($student_id, $sample_id){
+    function student($term_type, $exam_type, $student_id, $sample_id){
       $data['page_title'] = 'Analysis';
       $data['student_id'] = $student_id;
       $data['sample_id'] = $sample_id;
-      $data['student'] = $this->db->query("SELECT * FROM bulk_data BD WHERE BD.id = '".$student_id."' AND BD.sample_id = '".$sample_id."' ")->result();
+      $data['term'] = $term_type;
+      if($term_type == 't1'){
+        $data['term_title'] = 'Term 1';
+      }else if($term_type == 't2'){
+        $data['term_title'] = 'Term 2';
+      }else if($term_type == 't3'){
+        $data['term_title'] = 'Term 3';
+      }
+
+      $data['student'] = $this->db->query("SELECT BD.student, BD.sex, BD.regno, BD.class, 
+      ".$term_type."_".$exam_type."_mtc, 
+      ".$term_type."_".$exam_type."_eng, 
+      ".$term_type."_".$exam_type."_sci, 
+      ".$term_type."_".$exam_type."_sst 
+      FROM bulk_data BD WHERE BD.id = '".$student_id."' AND BD.sample_id = '".$sample_id."' ")->result();
       $this->load->view("portal/student", $data);
     }
     function logout(){
