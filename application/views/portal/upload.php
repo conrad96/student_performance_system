@@ -28,10 +28,10 @@
         </div>
         <?php
         if(!empty($msg)){
-          $msgDisp = explode("!.", $msg);
+          $msgDisp = explode("__", $msg);
           print '<div class="row">
             <div class="col-lg-12">
-              <center><h4 style="color: '.(!empty($msg) && $msgDisp[0] != 'Error'? 'black' : 'red').';">'.$msg.'</h4></center>
+              <center><h4 style="color: '.(!empty($msg) && $msgDisp[0] != 'danger'? 'black' : 'red').';">'.$msg.'</h4></center>
             </div>
           </div>';
         }

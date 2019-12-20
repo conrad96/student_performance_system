@@ -20,7 +20,7 @@ class User extends CI_Controller {
         $this->load->view("portal/index", $data);
     }
     function upload(){
-        $data['page_title'] = 'Upload';      
+        $data['page_title'] = 'Upload';           
         if(!empty($_POST)){
           //process file uploaded
           //move file to samples folder
@@ -150,9 +150,8 @@ class User extends CI_Controller {
             }
             
           }//move_uploaded_file
-            
-        }
-        $data['msg'] = ($status != null)? "success__Upload successfully. <a href='".base_url()."index.php/User/index'>Lookup students records here... </a>" : "danger__Upload failed";
+          $data['msg'] = ($status != null)? "success__Upload successfully. <a href='".base_url()."index.php/User/index'>Lookup students records here... </a>" : "danger__Upload failed";   
+        }        
         
         $this->load->view("portal/upload", $data);
     }
@@ -212,6 +211,7 @@ class User extends CI_Controller {
       $data['student_id'] = $student_id;
       $data['sample_id'] = $sample_id;
       $data['term'] = $term_type;
+      $data['exam_type_title'] = strtoupper($exam_type);
       if($term_type == 't1'){
         $data['term_title'] = 'Term 1';
       }else if($term_type == 't2'){
