@@ -54,7 +54,7 @@
                   <li class="list-group-item">Term: &nbsp;&nbsp;<b><?php echo $term_title; ?></b></li>
                   <li class="list-group-item">Exam: &nbsp;&nbsp;<b><?php echo $exam_type_title; ?></b></li>
                   <li class="list-group-item subjects">Subject: &nbsp;&nbsp;<label for="all">All</label>&nbsp;&nbsp;<input type="checkbox" name="all" id="all" /> &nbsp;&nbsp;<label for="mtc">Math</label>&nbsp;&nbsp;<input type="checkbox" class="chk-sub" name="mtc" id="mtc" />&nbsp;&nbsp;<label for="eng">English</label>&nbsp;&nbsp;<input type="checkbox" name="eng" id="eng" class="chk-sub" />&nbsp;&nbsp;<label for="sci">Science</label>&nbsp;&nbsp;<input type="checkbox" name="sci" id="sci" class="chk-sub" />&nbsp;&nbsp;<label for="sst">SST</label>&nbsp;&nbsp;<input type="checkbox" name="sst" id="sst" class="chk-sub" /></li>
-                  <li class="list-group-item">Term:  &nbsp;&nbsp;<label for="allTerms">All</label>&nbsp;&nbsp;<input type="checkbox" name="all" id="allTerms" /> &nbsp;&nbsp;<label for="t1">Term 1</label>&nbsp;&nbsp;<input type="radio" name="term" id="t1" <?php echo (($term == 't1')? 'checked' : ''); ?> />&nbsp;&nbsp;<label for="t2">Term 2</label>&nbsp;&nbsp;<input type="radio" name="term" id="t2" <?php echo (($term == 't2')? 'checked' : ''); ?> />&nbsp;&nbsp;<label for="t3">Term 3</label>&nbsp;&nbsp;<input type="radio" name="term" id="t3" <?php echo (($term == 't3')? 'checked' : ''); ?> /></li>
+                  <li class="list-group-item">Term:  &nbsp;&nbsp;<label for="allTerms">All</label>&nbsp;&nbsp;<input type="radio" id="allTerms" name="term" value="allTerms" class="termSelected" /> &nbsp;&nbsp;<label for="t1">Term 1</label>&nbsp;&nbsp;<input type="radio" name="term" id="t1" value="Term 1" class="termSelected" <?php echo (($term == 't1')? 'checked' : ''); ?> />&nbsp;&nbsp;<label for="t2">Term 2</label>&nbsp;&nbsp;<input type="radio" name="term" class="termSelected" value="Term 2" id="t2" <?php echo (($term == 't2')? 'checked' : ''); ?> />&nbsp;&nbsp;<label for="t3">Term 3</label>&nbsp;&nbsp;<input type="radio" name="term" class="termSelected" value="Term 3" id="t3" <?php echo (($term == 't3')? 'checked' : ''); ?> /></li>
               </ul>
           </div>
             
@@ -77,20 +77,56 @@
                 $counter = 0;
 
                 //initialise
-                $math['x'] = 100;
+                $math['label'] = 'Math';
                 $math['y'] = $student[$counter][$obj_mtc];
 
-                $english['x'] = 100;
+                $english['label'] = 'English';
                 $english['y'] = $student[$counter][$obj_eng];
 
-                $science['x'] = 100;
+                $science['label'] = 'Science';
                 $science['y'] = $student[$counter][$obj_sci];
 
-                $sst['x'] = 100;
-                $sst['y'] = $student[$counter][$obj_sst];                                                                                           
+                $sst['label'] = 'SST';
+                $sst['y'] = $student[$counter][$obj_sst];  
+
+                //assign to datapoints
+                $dataPoints = array($math, $english, $science, $sst);
               }
               ?>
-        </div>       
+        </div>  
+        <?php if(!empty($student)){ ?>  
+          <script>
+            window.onload = function () {         
+            var term, type;                
+            term = '<?= $term_title; ?>';
+            type = '<?= $exam_type_title; ?>';
+            
+            var chart = new CanvasJS.Chart("chartContainer", {
+                animationEnabled: true,
+                theme: "light2",
+                title:{
+                  text: term + '  ' + type + " Results"
+                },
+                axisY: {
+                  title: "Marks"
+                },
+                data: [{
+                  type: "column",
+                  yValueFormatString: "#,##0.## ",
+                  dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+                }]
+            });
+              
+            chart.render();     
+              
+            }  
+          </script>   
+          <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+        <?php }else{ ?>
+        <div class="alert alert-danger">
+          <h4>Students' records not found.</h4>
+        </div>
+        <?php } ?>
       </section>
       <div class="text-right">
         <div class="credits">        
