@@ -25,9 +25,12 @@ $(document).on('change', "#sample, #term, #exam", function(){
 $(document).on('click', '.subjects', function(event){    
     if(event.target.id != null){
         var itemBox = $("#"+ event.target.id);
-        if($(itemBox).is(":checked") && event.target.id == 'all'){
-            //check other checkboxes
-            $("input[type='checkbox']").prop("checked", true);
+        //check other checkboxes
+        if($(itemBox).is(":checked") && event.target.id == 'all'){           
+            $(".chk-sub").prop("checked", true);
+        }
+        if(!$(itemBox).is(":checked") && event.target.id == 'all'){           
+            $(".chk-sub").prop("checked", false);
         }
     }
 });
