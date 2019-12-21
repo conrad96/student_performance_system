@@ -30,10 +30,11 @@
                 <?php 
                   foreach($student as $stud){
                     ?>
-                    <li class="list-group-item">Name: <b><?php echo $stud->student; ?></b></li>
-                    <li class="list-group-item">Sex: <b><?php echo $stud->sex; ?></b></li>
-                    <li class="list-group-item">Regno: <b><?php echo $stud->regno; ?></b></li>
-                    <li class="list-group-item">Class: <b><?php echo $stud->class; ?></b></li>
+                    <li class="list-group-item">Name: <b><?php echo $stud['student']; ?></b></li>
+                    <li class="list-group-item">Sex: <b><?php echo $stud['sex']; ?></b></li>
+                    <li class="list-group-item">Regno: <b><?php echo $stud['regno']; ?></b></li>
+                    <li class="list-group-item">Class: <b><?php echo $stud['class']; ?></b></li>
+                    <li class="list-group-item">Date registered: <b><?php echo $stud['dateadded']; ?></b></li>
                     <?php 
                   }
                   ?>                
@@ -59,9 +60,36 @@
             
         </div>
         <div class="row">
-              <pre>
-              <?php print_r($student); ?>
-              </pre>
+              <!-- <pre>
+              <?php //print_r($student); ?>
+              </pre> -->
+              <?php 
+              if(!empty($student)){
+                $math = array();
+                $english = array();
+                $science = array();
+                $sst = array();
+
+                $obj_mtc = $term.'_'.strtolower($exam_type_title).'_mtc';
+                $obj_eng = $term.'_'.strtolower($exam_type_title).'_eng';
+                $obj_sci = $term.'_'.strtolower($exam_type_title).'_sci';
+                $obj_sst = $term.'_'.strtolower($exam_type_title).'_sst';
+                $counter = 0;
+
+                //initialise
+                $math['x'] = 100;
+                $math['y'] = $student[$counter][$obj_mtc];
+
+                $english['x'] = 100;
+                $english['y'] = $student[$counter][$obj_eng];
+
+                $science['x'] = 100;
+                $science['y'] = $student[$counter][$obj_sci];
+
+                $sst['x'] = 100;
+                $sst['y'] = $student[$counter][$obj_sst];                                                                                           
+              }
+              ?>
         </div>       
       </section>
       <div class="text-right">

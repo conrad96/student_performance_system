@@ -220,12 +220,12 @@ class User extends CI_Controller {
         $data['term_title'] = 'Term 3';
       }
 
-      $data['student'] = $this->db->query("SELECT BD.student, BD.sex, BD.regno, BD.class, 
+      $data['student'] = $this->db->query("SELECT BD.student, BD.sex, BD.regno, BD.class, BD.dateadded,
       ".$term_type."_".$exam_type."_mtc, 
       ".$term_type."_".$exam_type."_eng, 
       ".$term_type."_".$exam_type."_sci, 
       ".$term_type."_".$exam_type."_sst 
-      FROM bulk_data BD WHERE BD.id = '".$student_id."' AND BD.sample_id = '".$sample_id."' ")->result();
+      FROM bulk_data BD WHERE BD.id = '".$student_id."' AND BD.sample_id = '".$sample_id."' ")->result_array();
       $this->load->view("portal/student", $data);
     }
     function logout(){
