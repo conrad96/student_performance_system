@@ -118,11 +118,10 @@
                 }]
             });
               
-            chart.render();     
-              
+            chart.render();                   
             }  
           </script>   
-          <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+          <div id="chartContainer" style="height: 370px; width: 50%;"></div>
         <?php }else{ ?>
         <div class="alert alert-danger">
           <h4>Students' records not found.</h4>
