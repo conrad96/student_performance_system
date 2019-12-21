@@ -19,14 +19,15 @@
             <h3 class="page-header"><i class="fa fa-laptop"></i> Process</h3>
             <ol class="breadcrumb">
               <li><i class="fa fa-home"></i><a href="<?php echo base_url(); ?>index.php/User/results">Results</a></li>
-              <li><i class="fa fa-list-alt"></i><a href="<?php echo base_url(); ?>index.php/User/student/<?php echo $student_id; ?>/<?php echo $sample_id; ?>">Analytics</a></li>
+              <li><i class="fa fa-list-alt"></i><a href="<?php echo base_url(); ?>index.php/User/student/<?php echo $term; ?>/<?php echo strtolower($exam_type_title); ?>/<?php echo $student_id; ?>/<?php echo $sample_id; ?>">Analytics</a></li>
             </ol>
           </div>
         </div>  
         <div class="row">
            <div class="col-md-4">
+           <?php if(!empty($student)){ ?>
               <ul class="list-group">
-                <?php if(!empty($student)){ 
+                <?php 
                   foreach($student as $stud){
                     ?>
                     <li class="list-group-item">Name: <b><?php echo $stud->student; ?></b></li>
@@ -35,9 +36,15 @@
                     <li class="list-group-item">Class: <b><?php echo $stud->class; ?></b></li>
                     <?php 
                   }
-                  ?>
-                <?php } ?>
+                  ?>                
               </ul>
+              <?php }else{
+                ?>
+                <div class="alert alert-danger">
+                  <h4 class="smalltext">Students' records not found.</h4>
+                </div>
+                <?php 
+              } ?>
            </div>
            <div class="col-md-4">&nbsp;</div>
           <div class="col-md-4">
@@ -46,12 +53,15 @@
                   <li class="list-group-item">Term: &nbsp;&nbsp;<b><?php echo $term_title; ?></b></li>
                   <li class="list-group-item">Exam: &nbsp;&nbsp;<b><?php echo $exam_type_title; ?></b></li>
                   <li class="list-group-item subjects">Subject: &nbsp;&nbsp;<label for="all">All</label>&nbsp;&nbsp;<input type="checkbox" name="all" id="all" /> &nbsp;&nbsp;<label for="mtc">Math</label>&nbsp;&nbsp;<input type="checkbox" class="chk-sub" name="mtc" id="mtc" />&nbsp;&nbsp;<label for="eng">English</label>&nbsp;&nbsp;<input type="checkbox" name="eng" id="eng" class="chk-sub" />&nbsp;&nbsp;<label for="sci">Science</label>&nbsp;&nbsp;<input type="checkbox" name="sci" id="sci" class="chk-sub" />&nbsp;&nbsp;<label for="sst">SST</label>&nbsp;&nbsp;<input type="checkbox" name="sst" id="sst" class="chk-sub" /></li>
+                  <li class="list-group-item">Term:  &nbsp;&nbsp;<label for="allTerms">All</label>&nbsp;&nbsp;<input type="checkbox" name="all" id="allTerms" /> &nbsp;&nbsp;<label for="t1">Term 1</label>&nbsp;&nbsp;<input type="radio" name="term" id="t1" <?php echo (($term == 't1')? 'checked' : ''); ?> />&nbsp;&nbsp;<label for="t2">Term 2</label>&nbsp;&nbsp;<input type="radio" name="term" id="t2" <?php echo (($term == 't2')? 'checked' : ''); ?> />&nbsp;&nbsp;<label for="t3">Term 3</label>&nbsp;&nbsp;<input type="radio" name="term" id="t3" <?php echo (($term == 't3')? 'checked' : ''); ?> /></li>
               </ul>
           </div>
             
         </div>
         <div class="row">
-        
+              <pre>
+              <?php print_r($student); ?>
+              </pre>
         </div>       
       </section>
       <div class="text-right">
