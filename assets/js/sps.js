@@ -21,3 +21,13 @@ function filterResults(){
 $(document).on('change', "#sample, #term, #exam", function(){
     filterResults();        
 });
+
+$(document).on('click', '.subjects', function(event){    
+    if(event.target.id != null){
+        var itemBox = $("#"+ event.target.id);
+        if($(itemBox).is(":checked") && event.target.id == 'all'){
+            //check other checkboxes
+            $("input[type='checkbox']").prop("checked", true);
+        }
+    }
+});
