@@ -22,7 +22,7 @@
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/sps';
+$config['base_url'] = 'http://student-performance-analyser-1.herokuapp.com/';
 
 /*
 |--------------------------------------------------------------------------
