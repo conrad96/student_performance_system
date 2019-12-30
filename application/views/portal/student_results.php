@@ -1,6 +1,6 @@
 <?php 
               if(!empty($student)){
-                  exit(print_r($student));
+                  //exit(print_r($student));
                 
               }
               ?>
