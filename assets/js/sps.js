@@ -34,3 +34,7 @@ $(document).on('click', '.subjects', function(event){
         }
     }
 });
+//if yearly is checked display all terms
+$(document).on('change', '#yearly', function(event){
+    
+});
