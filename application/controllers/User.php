@@ -228,6 +228,45 @@ class User extends CI_Controller {
       FROM bulk_data BD WHERE BD.id = '".$student_id."' AND BD.sample_id = '".$sample_id."' ")->result_array();
       $this->load->view("portal/student", $data);
     }
+    function filter_student_results(){
+      
+      $data['page_title'] = 'Analysis';                             
+     
+      if(!empty($_POST)){
+        $student_id = $_POST['student_id'];
+        $sample_id = $_POST['sample_id'];
+
+        if(!empty($_POST['terms'])){          
+          if($_POST['type'] == 'yearly'){
+            $query_params = array();
+            if(!empty($_POST['subjects'])){
+              foreach($_POST['subjects'] as $subject){   
+                //t1             
+                array_push($query_params, 't1_bot_'.$subject);                             
+                array_push($query_params, 't1_mot_'.$subject);
+                array_push($query_params, 't1_eot_'.$subject);
+                //t2
+                array_push($query_params, 't2_bot_'.$subject);                             
+                array_push($query_params, 't2_mot_'.$subject);
+                array_push($query_params, 't2_eot_'.$subject);
+                //t3
+                array_push($query_params, 't3_bot_'.$subject);                             
+                array_push($query_params, 't3_mot_'.$subject);
+                array_push($query_params, 't3_eot_'.$subject);
+              }
+            }
+          }          
+        }
+        $query_str = implode(",", $query_params);  
+        $data['query_params']  = $query_params;
+
+        $data['student'] = $this->db->query("SELECT BD.student, BD.sex, BD.regno, BD.class, BD.dateadded,
+        ".$query_str."
+        FROM bulk_data BD WHERE BD.id = '".$student_id."' AND BD.sample_id = '".$sample_id."' ")->result_array();
+
+      }     
+      $this->load->view("portal/student_results", $data);
+    }
     function logout(){
         $this->session->sess_destroy();
         redirect("Login/index");
