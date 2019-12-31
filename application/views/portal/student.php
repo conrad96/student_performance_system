@@ -63,7 +63,7 @@
           </div>
             
         </div>
-        <div class="row" id="resultsCanvas">              
+        <div class="row" id="resultsCanvas">                    
              <?php $this->load->view("portal/student_results", 
              array('student'=> $student)); ?>
         </div>  

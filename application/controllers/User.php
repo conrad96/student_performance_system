@@ -220,12 +220,18 @@ class User extends CI_Controller {
         $data['term_title'] = 'Term 3';
       }
 
-      $data['student'] = $this->db->query("SELECT BD.student, BD.sex, BD.regno, BD.class, BD.dateadded,
-      ".$term_type."_".$exam_type."_mtc, 
-      ".$term_type."_".$exam_type."_eng, 
-      ".$term_type."_".$exam_type."_sci, 
-      ".$term_type."_".$exam_type."_sst 
+      $query_params = array();
+      array_push($query_params, $term_type.'_'.$exam_type.'_mtc');
+      array_push($query_params, $term_type.'_'.$exam_type.'_eng');
+      array_push($query_params, $term_type.'_'.$exam_type.'_sci');
+      array_push($query_params, $term_type.'_'.$exam_type.'_sst');
+
+      if(!empty($query_params)){
+        $query_str = $data['query_str'] = implode(',', $query_params);
+        $data['student'] = $this->db->query("SELECT BD.student, BD.sex, BD.regno, BD.class, BD.dateadded,
+        ".$query_str."
       FROM bulk_data BD WHERE BD.id = '".$student_id."' AND BD.sample_id = '".$sample_id."' ")->result_array();
+      }      
       $this->load->view("portal/student", $data);
     }
     function filter_student_results(){
@@ -263,7 +269,6 @@ class User extends CI_Controller {
         $data['student'] = $this->db->query("SELECT BD.student, BD.sex, BD.regno, BD.class, BD.dateadded,
         ".$query_str."
         FROM bulk_data BD WHERE BD.id = '".$student_id."' AND BD.sample_id = '".$sample_id."' ")->result_array();
-
       }     
       $this->load->view("portal/student_results", $data);
     }

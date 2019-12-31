@@ -1,7 +1,41 @@
 <?php 
               if(!empty($student)){
-                  //exit(print_r($student));
-                
+                $num_result_set = count($student)                ;
+                if($num_result_set > 1 ){
+
+                }else{
+                  //one bar graph
+                  print '<div id="chartContainer" class="chartDisplay-1"></div>';                  
+                  $dataPoints = array();
+                  $split_query_str = explode(',', $query_str);
+                  $math = array();
+                  $english = array();
+                  $science = array();
+                  $sst = array();
+                  foreach($split_query_str as $param){
+                    //explode last element on t1_bot_mtc
+                    $subject_query_str = explode('_', $param);
+                    foreach($student as $stud){
+                      if($subject_query_str[2] == 'mtc'){
+                        $math['label'] = 'Math';
+                        $math['y'] = $stud[$param];
+                      }
+                      if($subject_query_str[2] == 'eng'){
+                        $english['label'] = 'English';
+                        $english['y'] = $stud[$param];
+                      }
+                      if($subject_query_str[2] == 'sci'){
+                        $science['label'] = 'English';
+                        $science['y'] = $stud[$param];
+                      }
+                      if($subject_query_str[2] == 'sst'){
+                        $sst['label'] = 'SST';
+                        $sst['y'] = $stud[$param];
+                      }
+                    }
+                  }
+                  $dataPoints = array($math, $english, $science, $sst);                    
+                }
               }
               ?>
 <?php if(!empty($student)){ ?>  
@@ -29,8 +63,7 @@
               
             chart.render();                   
             }  
-          </script>   
-          <div id="chartContainer" class="chartDisplay"></div>
+          </script>             
         <?php }else{ ?>
         <div class="alert alert-danger">
           <h4>Students' records not found.</h4>
