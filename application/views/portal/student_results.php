@@ -27,35 +27,31 @@
                         '</div>';          
                   //logic to get respective terms
                   //term 1 data 
-                  $t1_math_bot = array();                  
-                  $t1_eng_bot = array();                  
-                  $t1_sci_bot = array();                  
-                  $t1_sst_bot = array();       
-                  //mot
-                  $t1_math_mot = array();                  
-                  $t1_eng_mot = array();                  
-                  $t1_sci_mot = array();                  
-                  $t1_sst_mot = array();
-                  //eot
-                  $t1_math_eot = array();                  
-                  $t1_eng_eot = array();                  
-                  $t1_sci_eot = array();                  
-                  $t1_sst_eot = array();             
-                  //initialise labels
-                  $t1_math_bot['label'] = 'Math';
-                  $t1_eng_bot['label'] = 'English';
-                  $t1_sci_bot['label'] = 'Science';
-                  $t1_sst_bot['label'] = 'SST';
-                  //mot
-                  $t1_math_mot['label'] = 'Math';
-                  $t1_eng_mot['label'] = 'English';
-                  $t1_sci_mot['label'] = 'Science';
-                  $t1_sst_mot['label'] = 'SST';
-                  //eot
-                  $t1_math_eot['label'] = 'Math';
-                  $t1_eng_eot['label'] = 'English';
-                  $t1_sci_eot['label'] = 'Science';
-                  $t1_sst_eot['label'] = 'SST';
+                  $t1_math_bot = $t1_eng_bot = $t1_sci_bot = $t1_sst_bot = array();                                                         
+                  $t1_math_mot = $t1_eng_mot = $t1_sci_mot = $t1_sst_mot = array();                                                      
+                  $t1_math_eot =  $t1_eng_eot = $t1_sci_eot = $t1_sst_eot = array();  
+                  //term 2 
+                  $t2_math_bot = $t2_eng_bot = $t2_sci_bot = $t2_sst_bot = array();                                                         
+                  $t2_math_mot = $t2_eng_mot = $t2_sci_mot = $t2_sst_mot = array();                                                      
+                  $t2_math_eot =  $t2_eng_eot = $t2_sci_eot = $t2_sst_eot = array();   
+                  //term 3
+                  $t3_math_bot = $t3_eng_bot = $t3_sci_bot = $t3_sst_bot = array();                                                         
+                  $t3_math_mot = $t3_eng_mot = $t3_sci_mot = $t3_sst_mot = array();                                                      
+                  $t3_math_eot =  $t3_eng_eot = $t3_sci_eot = $t3_sst_eot = array();   
+                           
+                  //initialise labels 
+                  //term 1
+                  $t1_math_bot['label'] = 'Math'; $t1_eng_bot['label'] = 'English'; $t1_sci_bot['label'] = 'Science'; $t1_sst_bot['label'] = 'SST';
+                  $t1_math_mot['label'] = 'Math'; $t1_eng_mot['label'] = 'English'; $t1_sci_mot['label'] = 'Science'; $t1_sst_mot['label'] = 'SST';
+                  $t1_math_eot['label'] = 'Math'; $t1_eng_eot['label'] = 'English'; $t1_sci_eot['label'] = 'Science'; $t1_sst_eot['label'] = 'SST';
+                  //term 2
+                  $t2_math_bot['label'] = 'Math'; $t2_eng_bot['label'] = 'English'; $t2_sci_bot['label'] = 'Science'; $t2_sst_bot['label'] = 'SST';
+                  $t2_math_mot['label'] = 'Math'; $t2_eng_mot['label'] = 'English'; $t2_sci_mot['label'] = 'Science'; $t2_sst_mot['label'] = 'SST';
+                  $t2_math_eot['label'] = 'Math'; $t2_eng_eot['label'] = 'English'; $t2_sci_eot['label'] = 'Science'; $t2_sst_eot['label'] = 'SST';
+                  //term 3
+                  $t3_math_bot['label'] = 'Math'; $t3_eng_bot['label'] = 'English'; $t3_sci_bot['label'] = 'Science'; $t3_sst_bot['label'] = 'SST';
+                  $t3_math_mot['label'] = 'Math'; $t3_eng_mot['label'] = 'English'; $t3_sci_mot['label'] = 'Science'; $t3_sst_mot['label'] = 'SST';
+                  $t3_math_eot['label'] = 'Math'; $t3_eng_eot['label'] = 'English'; $t3_sci_eot['label'] = 'Science'; $t3_sst_eot['label'] = 'SST';                  
 
                   foreach($student as $stud){
                     //bot                   
