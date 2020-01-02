@@ -265,9 +265,10 @@ class User extends CI_Controller {
             }
           }else if($_POST['type'] == 'termly'){
             $query_params = array();
+            $term_selected = !empty($_POST['terms'])? $_POST['terms'][0] : 't1';
             if(!empty($_POST['subjects'])){
               foreach($_POST['subjects'] as $subject){                
-                array_push($query_params, 't1_'.strtolower($_POST['examType']).'_'.$subject);                                            
+                array_push($query_params, $term_selected.'_'.strtolower($_POST['examType']).'_'.$subject);                                            
               }
             }
           }          

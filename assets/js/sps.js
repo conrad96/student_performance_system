@@ -135,6 +135,6 @@ $(document).on('change', '#yearly', function(event){
     }
     
     }
-$(document).on('change', '#termly, .chk-sub, .examSelected', function(event){
+$(document).on('change', '#termly, .chk-sub, .examSelected, #terms', function(event){
     filterTermlyResults();
 });
