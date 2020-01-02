@@ -85,9 +85,8 @@ $(document).on('change', '#yearly', function(event){
         $("#examTypeRow").show();
     }
 });
-
-$(document).on('change', '#termly', function(event){
-    var isTermly = $("#termly").is(":checked");
+    function filterTermlyResults(){
+        var isTermly = $("#termly").is(":checked");
     var getBaseURL = $("#getBaseURL").val();
     var subjects = new Array();
     var terms = new Array();  
@@ -126,9 +125,8 @@ $(document).on('change', '#termly', function(event){
             type: "post",
             url: getBaseURL + 'index.php/User/filter_student_results',
             data: {type: 'termly', subjects: subjects, examType: examType, terms: terms, student_id: studentId, sample_id: sampleId},
-            success: function(data){   
-                console.log(data);                
-                //$("#resultsCanvas").html(data);
+            success: function(data){                                  
+                $("#resultsCanvas").html(data);
             },
             error: function(xhr, error, status){                
                 console.log(xhr);
@@ -136,4 +134,7 @@ $(document).on('change', '#termly', function(event){
         });
     }
     
+    }
+$(document).on('change', '#termly, .chk-sub, .examSelected', function(event){
+    filterTermlyResults();
 });

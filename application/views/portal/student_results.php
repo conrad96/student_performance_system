@@ -240,32 +240,37 @@
                   <?php 
                 }else{
                   //one bar graph
-                  print '<div id="chartContainer" class="chartDisplay" style="width: 85%;"></div>';                  
+                  print '<div id="chartContainer" class="chartDisplay" style="width: 100%;"></div>';                  
                   $dataPoints = array();
                   $split_query_str = explode(',', $query_str);
                   $math = array(); $english = array(); $science = array(); $sst = array();
                   //extract term and exam
                   $title = ''; $exam_title = ''; 
                   if(!empty($split_query_str)){
-                    if($split_query_str[0] == 't1'){
-                      $title = 'Term 1';                    
+                    foreach($split_query_str as $fields){
+                      $term_fields_extract = explode('_', $fields);
+                      
+                      if($term_fields_extract[0] == 't1'){
+                        $title = 'Term 1';                    
+                      }
+                      if($term_fields_extract[0] == 't2'){
+                        $title = 'Term 2';                    
+                      }
+                      if($term_fields_extract[0] == 't3'){
+                        $title = 'Term 3';                    
+                      }
+                      //exam types
+                      if($term_fields_extract[1] == 'bot'){
+                        $exam_title = 'BOT';                    
+                      }
+                      if($term_fields_extract[1] == 'mot'){
+                        $exam_title = 'MOT';                    
+                      }
+                      if($term_fields_extract[1] == 'eot'){
+                        $exam_title = 'EOT';                    
+                      }
                     }
-                    if($split_query_str[0] == 't2'){
-                      $title = 'Term 2';                    
-                    }
-                    if($split_query_str[0] == 't3'){
-                      $title = 'Term 3';                    
-                    }
-                    //exam types
-                    if($split_query_str[1] == 'bot'){
-                      $exam_title = 'BOT';                    
-                    }
-                    if($split_query_str[1] == 'mot'){
-                      $exam_title = 'MOT';                    
-                    }
-                    if($split_query_str[1] == 'eot'){
-                      $exam_title = 'EOT';                    
-                    }
+
                     foreach($split_query_str as $param){
                       //explode last element on t1_bot_mtc
                       $subject_query_str = explode('_', $param);
@@ -292,7 +297,7 @@
                   $dataPoints = array($math, $english, $science, $sst);  
                   ?>
                   <script>
-                      window.onload = function () {         
+                      //window.onload = function () {         
                       var term = '<?= $title; ?>'; 
                       var type = '<?= $exam_title; ?>';                                       
                       var chart = new CanvasJS.Chart("chartContainer", {
@@ -312,7 +317,7 @@
                       });
                         
                       chart.render();                   
-                      }  
+                     // }  
                   </script>             
                   <?php                    
                 }                
