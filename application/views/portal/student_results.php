@@ -7,24 +7,20 @@
                 //echo $params_counter;                
                 if($params_counter > 4 ){
                   //multi series bar charts
-                  //term 1
                   print '<div class="row">'.
-                          '<div class="col-md-12">'. 
-                            '<div id="chartContainer_term1" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>'. 
-                          '</div>'. 
-                        '</div>';
-                  //term 2 
-                  print '<div class="row">'.
-                          '<div class="col-md-12">'. 
-                            '<div id="chartContainer_term2" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>'. 
-                          '</div>'. 
-                        '</div>';
-                  //term 3
-                  print '<div class="row">'.
-                          '<div class="col-md-12">'. 
-                            '<div id="chartContainer_term3" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>'. 
-                          '</div>'. 
-                        '</div>';          
+                            '<div class="col-md-6">
+                              <div id="chartContainer_term1" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
+                            </div>
+                            <div class="col-md-6">
+                              <div id="chartContainer_term2" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>  
+                            </div>
+                        </div>';
+                  print '<div class="row">
+                            <div class="col-md-12">
+                              <div id="chartContainer_term3" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
+                            </div>
+                        </div>';
+                 
                   //logic to get respective terms
                   //term 1 data 
                   $t1_math_bot = $t1_eng_bot = $t1_sci_bot = $t1_sst_bot = array();                                                         
