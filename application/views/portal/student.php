@@ -57,15 +57,18 @@
                   <li class="list-group-item">Term: &nbsp;&nbsp;<b><?php echo $term_title; ?></b></li>
                   <li class="list-group-item">Exam: &nbsp;&nbsp;<b><?php echo $exam_type_title; ?></b></li>
                   <li class="list-group-item subjects">Subject: &nbsp;&nbsp;<label for="all">All</label>&nbsp;&nbsp;<input type="checkbox" name="all" id="all" class="chk-sub" value="all" /> &nbsp;&nbsp;<label for="mtc">Math</label>&nbsp;&nbsp;<input type="checkbox" class="chk-sub" name="mtc" id="mtc" value="mtc" />&nbsp;&nbsp;<label for="eng">English</label>&nbsp;&nbsp;<input type="checkbox" name="eng" id="eng" class="chk-sub" value="eng" />&nbsp;&nbsp;<label for="sci">Science</label>&nbsp;&nbsp;<input type="checkbox" name="sci" id="sci" class="chk-sub" value="sci" />&nbsp;&nbsp;<label for="sst">SST</label>&nbsp;&nbsp;<input type="checkbox" name="sst" id="sst" value="sst" class="chk-sub" /></li>
-                  <li class="list-group-item terms">Term:  &nbsp;&nbsp;<label for="allTerms">All</label>&nbsp;&nbsp;<input type="radio" id="allTerms" name="term" value="allTerms" class="termSelected" /> &nbsp;&nbsp;<label for="t1">Term 1</label>&nbsp;&nbsp;<input type="radio" name="term" id="t1" value="Term 1" class="termSelected" <?php echo (($term == 't1')? 'checked' : ''); ?> />&nbsp;&nbsp;<label for="t2">Term 2</label>&nbsp;&nbsp;<input type="radio" name="term" class="termSelected" value="Term 2" id="t2" <?php echo (($term == 't2')? 'checked' : ''); ?> />&nbsp;&nbsp;<label for="t3">Term 3</label>&nbsp;&nbsp;<input type="radio" name="term" class="termSelected" value="Term 3" id="t3" <?php echo (($term == 't3')? 'checked' : ''); ?> /></li>
+                  <li id="terms" class="list-group-item terms">Term:  &nbsp;&nbsp;<label for="allTerms">All</label>&nbsp;&nbsp;<input type="radio" id="allTerms" name="term" value="allTerms" class="termSelected" /> &nbsp;&nbsp;<label for="t1">Term 1</label>&nbsp;&nbsp;<input type="radio" name="term" id="t1" value="Term 1" class="termSelected" <?php echo (($term == 't1')? 'checked' : ''); ?> />&nbsp;&nbsp;<label for="t2">Term 2</label>&nbsp;&nbsp;<input type="radio" name="term" class="termSelected" value="Term 2" id="t2" <?php echo (($term == 't2')? 'checked' : ''); ?> />&nbsp;&nbsp;<label for="t3">Term 3</label>&nbsp;&nbsp;<input type="radio" name="term" class="termSelected" value="Term 3" id="t3" <?php echo (($term == 't3')? 'checked' : ''); ?> /></li>
                   <li class="list-group-item exams"id="examTypeRow">Exam:  &nbsp;&nbsp;<label for="allExam">All</label>&nbsp;&nbsp;<input type="radio" id="allExam" name="exam_type" value="allExam" class="examSelected" /> &nbsp;&nbsp;<label for="bot">B.O.T</label>&nbsp;&nbsp;<input type="radio" name="exam_type" id="bot" value="BOT" class="examSelected" <?php echo ((strtolower($exam_type_title) == 'bot')? 'checked' : ''); ?> />  &nbsp;&nbsp;<label for="mot">M.O.T</label>&nbsp;&nbsp;<input type="radio" name="exam_type" class="examSelected" value="MOT" id="mot" <?php echo ((strtolower($exam_type_title) == 'mot')? 'checked' : ''); ?> /> &nbsp;&nbsp;<label for="eot">E.O.T</label>&nbsp;&nbsp;<input type="radio" name="exam_type" class="examSelected" value="EOT" id="eot" <?php echo ((strtolower($exam_type_title) == 'eot')? 'checked' : ''); ?> /></li>
               </ul>
           </div>
             
         </div>
         <div class="row" id="resultsCanvas">                    
-             <?php $this->load->view("portal/student_results", 
-             array('student'=> $student)); ?>
+             <?php 
+             $this->load->view("portal/student_results", 
+                    array('student'=> $student)
+                  ); 
+             ?>
         </div>  
        
       </section>

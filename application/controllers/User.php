@@ -232,6 +232,7 @@ class User extends CI_Controller {
         ".$query_str."
       FROM bulk_data BD WHERE BD.id = '".$student_id."' AND BD.sample_id = '".$sample_id."' ")->result_array();
       }      
+      $data['query_params'] = $query_params;
       $this->load->view("portal/student", $data);
     }
     function filter_student_results(){
@@ -240,14 +241,14 @@ class User extends CI_Controller {
      
       if(!empty($_POST)){
         $student_id = $_POST['student_id'];
-        $sample_id = $_POST['sample_id'];
-
+        $sample_id = $_POST['sample_id'];        
         if(!empty($_POST['terms'])){          
           if($_POST['type'] == 'yearly'){
             $query_params = array();
             if(!empty($_POST['subjects'])){
-              foreach($_POST['subjects'] as $subject){   
-                //t1             
+              foreach($_POST['subjects'] as $subject){ 
+                //if($subject != 'all'){
+                  //t1             
                 array_push($query_params, 't1_bot_'.$subject);                             
                 array_push($query_params, 't1_mot_'.$subject);
                 array_push($query_params, 't1_eot_'.$subject);
@@ -259,6 +260,7 @@ class User extends CI_Controller {
                 array_push($query_params, 't3_bot_'.$subject);                             
                 array_push($query_params, 't3_mot_'.$subject);
                 array_push($query_params, 't3_eot_'.$subject);
+                //}                 
               }
             }
           }          
@@ -266,10 +268,11 @@ class User extends CI_Controller {
         $query_str = implode(",", $query_params);  
         $data['query_params']  = $query_params;
 
-        $data['student'] = $this->db->query("SELECT BD.student, BD.sex, BD.regno, BD.class, BD.dateadded,
-        ".$query_str."
+        $data['student'] = $this->db->query("SELECT BD.student, BD.sex, BD.regno, BD.class, BD.dateadded
+        ".(!empty($query_str)? ', '.$query_str : '')."
         FROM bulk_data BD WHERE BD.id = '".$student_id."' AND BD.sample_id = '".$sample_id."' ")->result_array();
-      }     
+      }         
+      // exit(print_r($data));      
       $this->load->view("portal/student_results", $data);
     }
     function logout(){
