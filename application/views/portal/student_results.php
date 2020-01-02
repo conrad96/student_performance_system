@@ -166,7 +166,7 @@
                      // window.onload = function () {                        
                       var chart = new CanvasJS.Chart("chartContainer_term2", {
                         animationEnabled: true,
-                        title:{ text: "Term 1" },
+                        title:{ text: "Term 2" },
                         axisY: { title: "Marks" },
                         legend: { cursor:"pointer", itemclick : toggleDataSeries},
                         toolTip: {shared: true, content: toolTipFormatter},
@@ -206,7 +206,7 @@
                      // window.onload = function () {                        
                       var chart = new CanvasJS.Chart("chartContainer_term3", {
                         animationEnabled: true,
-                        title:{ text: "Term 1" },
+                        title:{ text: "Term 3" },
                         axisY: { title: "Marks" },
                         legend: { cursor:"pointer", itemclick : toggleDataSeries},
                         toolTip: {shared: true, content: toolTipFormatter},
