@@ -7,7 +7,7 @@
                 //echo $params_counter;                
                 if($params_counter > 4 ){
                   //multi series bar charts
-                  print '<div class="row">'.
+                  print '<div class="row chart-area">'.
                             '<div class="col-md-6">
                               <div id="chartContainer_term1" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
                             </div>
@@ -15,9 +15,9 @@
                               <div id="chartContainer_term2" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>  
                             </div>
                         </div>';
-                  print '<div class="row">
+                  print '<div class="row chart-area">
                             <div class="col-md-12">
-                              <div id="chartContainer_term3" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
+                              <div id="chartContainer_term3" style="height: 370px; margin: 0px auto;"></div>
                             </div>
                         </div>';
                  
