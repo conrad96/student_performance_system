@@ -263,16 +263,23 @@ class User extends CI_Controller {
                 //}                 
               }
             }
+          }else if($_POST['type'] == 'termly'){
+            $query_params = array();
+            if(!empty($_POST['subjects'])){
+              foreach($_POST['subjects'] as $subject){                
+                array_push($query_params, 't1_'.strtolower($_POST['examType']).'_'.$subject);                                            
+              }
+            }
           }          
         }
-        $query_str = implode(",", $query_params);  
+        $query_str = $data['query_str'] = implode(",", $query_params);  
         $data['query_params']  = $query_params;
-
+        
         $data['student'] = $this->db->query("SELECT BD.student, BD.sex, BD.regno, BD.class, BD.dateadded
         ".(!empty($query_str)? ', '.$query_str : '')."
         FROM bulk_data BD WHERE BD.id = '".$student_id."' AND BD.sample_id = '".$sample_id."' ")->result_array();
       }         
-      // exit(print_r($data));      
+      //exit(print_r($data));      
       $this->load->view("portal/student_results", $data);
     }
     function logout(){

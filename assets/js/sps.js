@@ -43,6 +43,20 @@ $(document).on('change', '#yearly', function(event){
     var studentId = $("#student_id").val();
     var sampleId = $("#sample_id").val();
 
+    //push filter variables
+    $(".chk-sub").each(function(index, element){           
+        if($(this).is(":checked")){
+            var checkedSubject = $(this).attr("value");
+            if(checkedSubject != 'all') subjects.push(checkedSubject);
+        }
+    });
+    $(".termSelected").each(function(index, element){
+        if($(this).is(":checked")){
+            var checkedTerm = $(this).attr("id");
+            terms.push(checkedTerm);
+        }
+    });
+
     if(isYearlyChecked){
         //by default check all subjects
         $(".chk-sub").prop("checked", true);
@@ -50,37 +64,76 @@ $(document).on('change', '#yearly', function(event){
         //hide exam row
         $("#examTypeRow").hide();
         $("#terms").hide();
-        $(".chk-sub").each(function(index, element){           
-            if($(this).is(":checked")){
-                var checkedSubject = $(this).attr("value");
-                if(checkedSubject != 'all') subjects.push(checkedSubject);
-            }
-        });
-        $(".termSelected").each(function(index, element){
-            if($(this).is(":checked")){
-                var checkedTerm = $(this).attr("id");
-                terms.push(checkedTerm);
-            }
-        });
-        
+                
         //load result set 
         $.ajax({
             type: "post",
             url: getBaseURL + 'index.php/User/filter_student_results',
             data: {type: 'yearly', subjects: subjects, terms: terms, student_id: studentId, sample_id: sampleId},
-            success: function(data){   
-                console.log(data);                
+            success: function(data){                                  
                 $("#resultsCanvas").html(data);
             },
             error: function(xhr, error, status){                
                 console.log(xhr);
             }
         });
+
         //display all terms with exam types
         var chartCanvas = $(".chartDisplay");
         $(chartCanvas).attr({"class": "col-md-4"});
     }else{
         $("#examTypeRow").show();
-        console.log('not checked');
     }
+});
+
+$(document).on('change', '#termly', function(event){
+    var isTermly = $("#termly").is(":checked");
+    var getBaseURL = $("#getBaseURL").val();
+    var subjects = new Array();
+    var terms = new Array();  
+    var examType = '';
+    var studentId = $("#student_id").val();
+    var sampleId = $("#sample_id").val();
+    //show hidden fields
+    $("#examTypeRow").show();
+
+    $(".examSelected").each(function(index, element){
+        if($(this).is(":checked")){
+            if($(this).attr("value") != 'allExam'){
+                examType = $(this).attr('value');
+            }else{
+                examType = 'bot'; //initialie it to bot
+            }
+        }
+    });
+    //push filter variables
+    $(".chk-sub").each(function(index, element){           
+        if($(this).is(":checked")){
+            var checkedSubject = $(this).attr("value");
+            if(checkedSubject != 'all') subjects.push(checkedSubject);
+        }
+    });
+    
+    $(".termSelected").each(function(index, element){
+        if($(this).is(":checked")){
+            var checkedTerm = $(this).attr("id");
+            terms.push(checkedTerm);
+        }
+    });
+    
+    if(isTermly){
+        $.ajax({
+            type: "post",
+            url: getBaseURL + 'index.php/User/filter_student_results',
+            data: {type: 'termly', subjects: subjects, examType: examType, terms: terms, student_id: studentId, sample_id: sampleId},
+            success: function(data){   
+                console.log(data);                
+                //$("#resultsCanvas").html(data);
+            },
+            error: function(xhr, error, status){                
+                console.log(xhr);
+            }
+        });
+    }
+    
 });

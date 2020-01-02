@@ -246,44 +246,46 @@
                   $math = array(); $english = array(); $science = array(); $sst = array();
                   //extract term and exam
                   $title = ''; $exam_title = ''; 
-                  if($split_query_str[0] == 't1'){
-                    $title = 'Term 1';                    
-                  }
-                  if($split_query_str[0] == 't2'){
-                    $title = 'Term 2';                    
-                  }
-                  if($split_query_str[0] == 't3'){
-                    $title = 'Term 3';                    
-                  }
-                  //exam types
-                  if($split_query_str[1] == 'bot'){
-                    $exam_title = 'BOT';                    
-                  }
-                  if($split_query_str[1] == 'mot'){
-                    $exam_title = 'MOT';                    
-                  }
-                  if($split_query_str[1] == 'eot'){
-                    $exam_title = 'EOT';                    
-                  }
-                  foreach($split_query_str as $param){
-                    //explode last element on t1_bot_mtc
-                    $subject_query_str = explode('_', $param);
-                    foreach($student as $stud){
-                      if($subject_query_str[2] == 'mtc'){
-                        $math['label'] = 'Math';
-                        $math['y'] = $stud[$param];
-                      }
-                      if($subject_query_str[2] == 'eng'){
-                        $english['label'] = 'English';
-                        $english['y'] = $stud[$param];
-                      }
-                      if($subject_query_str[2] == 'sci'){
-                        $science['label'] = 'Science';
-                        $science['y'] = $stud[$param];
-                      }
-                      if($subject_query_str[2] == 'sst'){
-                        $sst['label'] = 'SST';
-                        $sst['y'] = $stud[$param];
+                  if(!empty($split_query_str)){
+                    if($split_query_str[0] == 't1'){
+                      $title = 'Term 1';                    
+                    }
+                    if($split_query_str[0] == 't2'){
+                      $title = 'Term 2';                    
+                    }
+                    if($split_query_str[0] == 't3'){
+                      $title = 'Term 3';                    
+                    }
+                    //exam types
+                    if($split_query_str[1] == 'bot'){
+                      $exam_title = 'BOT';                    
+                    }
+                    if($split_query_str[1] == 'mot'){
+                      $exam_title = 'MOT';                    
+                    }
+                    if($split_query_str[1] == 'eot'){
+                      $exam_title = 'EOT';                    
+                    }
+                    foreach($split_query_str as $param){
+                      //explode last element on t1_bot_mtc
+                      $subject_query_str = explode('_', $param);
+                      foreach($student as $stud){
+                        if($subject_query_str[2] == 'mtc'){
+                          $math['label'] = 'Math';
+                          $math['y'] = $stud[$param];
+                        }
+                        if($subject_query_str[2] == 'eng'){
+                          $english['label'] = 'English';
+                          $english['y'] = $stud[$param];
+                        }
+                        if($subject_query_str[2] == 'sci'){
+                          $science['label'] = 'Science';
+                          $science['y'] = $stud[$param];
+                        }
+                        if($subject_query_str[2] == 'sst'){
+                          $sst['label'] = 'SST';
+                          $sst['y'] = $stud[$param];
+                        }
                       }
                     }
                   }
@@ -314,13 +316,8 @@
                   </script>             
                   <?php                    
                 }                
-              }
-              ?>
-<?php if(!empty($student)){ ?>  
-          
-          
-        <?php }else{ ?>
-        <div class="alert alert-danger">
-          <h4>Students' records not found.</h4>
-        </div>
-        <?php } ?>        
+              }else{ ?>
+                <div class="alert alert-danger">
+                  <h4>Students' records not found.</h4>
+                </div>
+                <?php } ?>                      
