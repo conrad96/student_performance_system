@@ -240,13 +240,31 @@
                   <?php 
                 }else{
                   //one bar graph
-                  //print '<div id="chartContainer" class="chartDisplay" style="width: 100%;"></div>';                  
+                  print '<div id="chartContainer" class="chartDisplay" style="width: 85%;"></div>';                  
                   $dataPoints = array();
                   $split_query_str = explode(',', $query_str);
-                  $math = array();
-                  $english = array();
-                  $science = array();
-                  $sst = array();
+                  $math = array(); $english = array(); $science = array(); $sst = array();
+                  //extract term and exam
+                  $title = ''; $exam_title = ''; 
+                  if($split_query_str[0] == 't1'){
+                    $title = 'Term 1';                    
+                  }
+                  if($split_query_str[0] == 't2'){
+                    $title = 'Term 2';                    
+                  }
+                  if($split_query_str[0] == 't3'){
+                    $title = 'Term 3';                    
+                  }
+                  //exam types
+                  if($split_query_str[1] == 'bot'){
+                    $exam_title = 'BOT';                    
+                  }
+                  if($split_query_str[1] == 'mot'){
+                    $exam_title = 'MOT';                    
+                  }
+                  if($split_query_str[1] == 'eot'){
+                    $exam_title = 'EOT';                    
+                  }
                   foreach($split_query_str as $param){
                     //explode last element on t1_bot_mtc
                     $subject_query_str = explode('_', $param);
@@ -269,34 +287,38 @@
                       }
                     }
                   }
-                  $dataPoints = array($math, $english, $science, $sst);                    
+                  $dataPoints = array($math, $english, $science, $sst);  
+                  ?>
+                  <script>
+                      window.onload = function () {         
+                      var term = '<?= $title; ?>'; 
+                      var type = '<?= $exam_title; ?>';                                       
+                      var chart = new CanvasJS.Chart("chartContainer", {
+                          animationEnabled: true,
+                          theme: "light2",
+                          title:{
+                            text: term + '  ' + type + " Results"
+                          },
+                          axisY: {
+                            title: "Marks"
+                          },
+                          data: [{
+                            type: "column",
+                            yValueFormatString: "#,##0.## ",
+                            dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+                          }]
+                      });
+                        
+                      chart.render();                   
+                      }  
+                  </script>             
+                  <?php                    
                 }                
               }
               ?>
 <?php if(!empty($student)){ ?>  
           
-          <!-- <script>
-            window.onload = function () {         
-            var term, type;                                       
-            var chart = new CanvasJS.Chart("chartContainer", {
-                animationEnabled: true,
-                theme: "light2",
-                title:{
-                  text: term + '  ' + type + " Results"
-                },
-                axisY: {
-                  title: "Marks"
-                },
-                data: [{
-                  type: "column",
-                  yValueFormatString: "#,##0.## ",
-                  dataPoints: <?php //echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
-                }]
-            });
-              
-            chart.render();                   
-            }  
-          </script>              -->
+          
         <?php }else{ ?>
         <div class="alert alert-danger">
           <h4>Students' records not found.</h4>
