@@ -54,6 +54,7 @@
                   $t3_math_eot['label'] = 'Math'; $t3_eng_eot['label'] = 'English'; $t3_sci_eot['label'] = 'Science'; $t3_sst_eot['label'] = 'SST';                  
 
                   foreach($student as $stud){
+                    /** Term 1 */
                     //bot                   
                     $t1_math_bot['y'] = $stud['t1_bot_mtc'];
                     $t1_eng_bot['y'] = $stud['t1_bot_eng'];
@@ -68,13 +69,59 @@
                     $t1_math_eot['y'] = $stud['t1_eot_mtc'];
                     $t1_eng_eot['y'] = $stud['t1_eot_eng'];
                     $t1_sci_eot['y'] = $stud['t1_eot_sci'];
-                    $t1_sst_eot['y'] = $stud['t1_eot_sst'];                                                         
+                    $t1_sst_eot['y'] = $stud['t1_eot_sst'];    
+                    
+                    
+                    /** Term 2 */
+                    //bot                   
+                    $t2_math_bot['y'] = $stud['t2_bot_mtc'];
+                    $t2_eng_bot['y'] = $stud['t2_bot_eng'];
+                    $t2_sci_bot['y'] = $stud['t2_bot_sci'];
+                    $t2_sst_bot['y'] = $stud['t2_bot_sst'];
+                    //mot
+                    $t2_math_mot['y'] = $stud['t2_mot_mtc'];
+                    $t2_eng_mot['y'] = $stud['t2_mot_eng'];
+                    $t2_sci_mot['y'] = $stud['t2_mot_sci'];
+                    $t2_sst_mot['y'] = $stud['t2_mot_sst']; 
+                    //eot
+                    $t2_math_eot['y'] = $stud['t2_eot_mtc'];
+                    $t2_eng_eot['y'] = $stud['t2_eot_eng'];
+                    $t2_sci_eot['y'] = $stud['t2_eot_sci'];
+                    $t2_sst_eot['y'] = $stud['t2_eot_sst']; 
+                    
+                    
+                    /** Term 3 */
+                    //bot                   
+                    $t3_math_bot['y'] = $stud['t3_bot_mtc'];
+                    $t3_eng_bot['y'] = $stud['t3_bot_eng'];
+                    $t3_sci_bot['y'] = $stud['t3_bot_sci'];
+                    $t3_sst_bot['y'] = $stud['t3_bot_sst'];
+                    //mot
+                    $t3_math_mot['y'] = $stud['t3_mot_mtc'];
+                    $t3_eng_mot['y'] = $stud['t3_mot_eng'];
+                    $t3_sci_mot['y'] = $stud['t3_mot_sci'];
+                    $t3_sst_mot['y'] = $stud['t3_mot_sst']; 
+                    //eot
+                    $t3_math_eot['y'] = $stud['t3_eot_mtc'];
+                    $t3_eng_eot['y'] = $stud['t3_eot_eng'];
+                    $t3_sci_eot['y'] = $stud['t3_eot_sci'];
+                    $t3_sst_eot['y'] = $stud['t3_eot_sst'];                                                                  
                   }
-                  $dataPointsExams_bot = array($t1_math_bot, $t1_eng_bot, $t1_sci_bot, $t1_sst_bot);
-                  $dataPointsExams_mot = array($t1_math_mot, $t1_eng_mot, $t1_sci_mot, $t1_sst_mot);
-                  $dataPointsExams_eot = array($t1_math_eot, $t1_eng_eot, $t1_sci_eot, $t1_sst_eot);
+                  //term 1
+                  $dataPointsExams_bot_1 = array($t1_math_bot, $t1_eng_bot, $t1_sci_bot, $t1_sst_bot);
+                  $dataPointsExams_mot_1 = array($t1_math_mot, $t1_eng_mot, $t1_sci_mot, $t1_sst_mot);
+                  $dataPointsExams_eot_1 = array($t1_math_eot, $t1_eng_eot, $t1_sci_eot, $t1_sst_eot);
+                  //term 2
+                  $dataPointsExams_bot_2 = array($t2_math_bot, $t2_eng_bot, $t2_sci_bot, $t2_sst_bot);
+                  $dataPointsExams_mot_2 = array($t2_math_mot, $t2_eng_mot, $t2_sci_mot, $t2_sst_mot);
+                  $dataPointsExams_eot_2 = array($t2_math_eot, $t2_eng_eot, $t2_sci_eot, $t2_sst_eot);
+                  //term 3
+                  $dataPointsExams_bot_3 = array($t3_math_bot, $t3_eng_bot, $t3_sci_bot, $t3_sst_bot);
+                  $dataPointsExams_mot_3 = array($t3_math_mot, $t3_eng_mot, $t3_sci_mot, $t3_sst_mot);
+                  $dataPointsExams_eot_3 = array($t3_math_eot, $t3_eng_eot, $t3_sci_eot, $t3_sst_eot);
                   //load scripts
                   ?>
+                  <!-- term 1 -->
                   <script type="text/javascript">                  
                      // window.onload = function () {                        
                       var chart = new CanvasJS.Chart("chartContainer_term1", {
@@ -83,7 +130,87 @@
                         axisY: { title: "Marks" },
                         legend: { cursor:"pointer", itemclick : toggleDataSeries},
                         toolTip: {shared: true, content: toolTipFormatter},
-                        data: [{type: "bar",showInLegend: true,name: "BOT",color: "yellow",dataPoints: <?php echo json_encode($dataPointsExams_bot, JSON_NUMERIC_CHECK); ?>}, {type: "bar",showInLegend: true,name: "MOT",color: "silver",dataPoints: <?php echo json_encode($dataPointsExams_mot, JSON_NUMERIC_CHECK); ?>}, {type: "bar",showInLegend: true,name: "EOT",color: "#A57164",dataPoints: <?php echo json_encode($dataPointsExams_eot, JSON_NUMERIC_CHECK); ?>}]
+                        data: [{type: "bar",showInLegend: true,name: "BOT",color: "yellow",dataPoints: <?php echo json_encode($dataPointsExams_bot_1, JSON_NUMERIC_CHECK); ?>}, {type: "bar",showInLegend: true,name: "MOT",color: "silver",dataPoints: <?php echo json_encode($dataPointsExams_mot_1, JSON_NUMERIC_CHECK); ?>}, {type: "bar",showInLegend: true,name: "EOT",color: "#A57164",dataPoints: <?php echo json_encode($dataPointsExams_eot_1, JSON_NUMERIC_CHECK); ?>}]
+                      });
+                      chart.render();
+
+                      function toolTipFormatter(e) {
+                        var str = "";
+                        var total = 0 ;
+                        var str3;
+                        var str2 ;
+                        for (var i = 0; i < e.entries.length; i++){
+                          var str1 = "<span style= 'color:"+e.entries[i].dataSeries.color + "'>" + e.entries[i].dataSeries.name + "</span>: <strong>"+  e.entries[i].dataPoint.y + "</strong> <br/>" ;
+                          total = e.entries[i].dataPoint.y + total;
+                          str = str.concat(str1);
+                        }
+                        str2 = "<strong>" + e.entries[0].dataPoint.label + "</strong> <br/>";
+                        str3 = "<span style = 'color:Tomato'>AVG: </span><strong>" + (total / 3) + "</strong><br/>";
+                        return (str2.concat(str)).concat(str3);
+                      }
+
+                      function toggleDataSeries(e) {
+                        if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                          e.dataSeries.visible = false;
+                        }
+                        else {
+                          e.dataSeries.visible = true;
+                        }
+                        chart.render();
+                      }
+
+                     // }
+                  </script>
+                  <!-- term 2 -->
+                  <script type="text/javascript">                  
+                     // window.onload = function () {                        
+                      var chart = new CanvasJS.Chart("chartContainer_term2", {
+                        animationEnabled: true,
+                        title:{ text: "Term 1" },
+                        axisY: { title: "Marks" },
+                        legend: { cursor:"pointer", itemclick : toggleDataSeries},
+                        toolTip: {shared: true, content: toolTipFormatter},
+                        data: [{type: "bar",showInLegend: true,name: "BOT",color: "yellow",dataPoints: <?php echo json_encode($dataPointsExams_bot_2, JSON_NUMERIC_CHECK); ?>}, {type: "bar",showInLegend: true,name: "MOT",color: "silver",dataPoints: <?php echo json_encode($dataPointsExams_mot_2, JSON_NUMERIC_CHECK); ?>}, {type: "bar",showInLegend: true,name: "EOT",color: "#A57164",dataPoints: <?php echo json_encode($dataPointsExams_eot_2, JSON_NUMERIC_CHECK); ?>}]
+                      });
+                      chart.render();
+
+                      function toolTipFormatter(e) {
+                        var str = "";
+                        var total = 0 ;
+                        var str3;
+                        var str2 ;
+                        for (var i = 0; i < e.entries.length; i++){
+                          var str1 = "<span style= 'color:"+e.entries[i].dataSeries.color + "'>" + e.entries[i].dataSeries.name + "</span>: <strong>"+  e.entries[i].dataPoint.y + "</strong> <br/>" ;
+                          total = e.entries[i].dataPoint.y + total;
+                          str = str.concat(str1);
+                        }
+                        str2 = "<strong>" + e.entries[0].dataPoint.label + "</strong> <br/>";
+                        str3 = "<span style = 'color:Tomato'>AVG: </span><strong>" + (total / 3) + "</strong><br/>";
+                        return (str2.concat(str)).concat(str3);
+                      }
+
+                      function toggleDataSeries(e) {
+                        if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                          e.dataSeries.visible = false;
+                        }
+                        else {
+                          e.dataSeries.visible = true;
+                        }
+                        chart.render();
+                      }
+
+                     // }
+                  </script>
+                  <!-- term 3 -->
+                  <script type="text/javascript">                  
+                     // window.onload = function () {                        
+                      var chart = new CanvasJS.Chart("chartContainer_term3", {
+                        animationEnabled: true,
+                        title:{ text: "Term 1" },
+                        axisY: { title: "Marks" },
+                        legend: { cursor:"pointer", itemclick : toggleDataSeries},
+                        toolTip: {shared: true, content: toolTipFormatter},
+                        data: [{type: "bar",showInLegend: true,name: "BOT",color: "yellow",dataPoints: <?php echo json_encode($dataPointsExams_bot_3, JSON_NUMERIC_CHECK); ?>}, {type: "bar",showInLegend: true,name: "MOT",color: "silver",dataPoints: <?php echo json_encode($dataPointsExams_mot_3, JSON_NUMERIC_CHECK); ?>}, {type: "bar",showInLegend: true,name: "EOT",color: "#A57164",dataPoints: <?php echo json_encode($dataPointsExams_eot_3, JSON_NUMERIC_CHECK); ?>}]
                       });
                       chart.render();
 
