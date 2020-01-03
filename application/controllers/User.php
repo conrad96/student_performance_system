@@ -171,7 +171,7 @@ class User extends CI_Controller {
       $data['examtype'] = 'BOT';
       $data['term'] = array('title'=>'Term 1', 'type'=> 't1');
       $data['performance'] = $this->db->query("SELECT BD.id, BD.sample_id,
-      BD.student, 
+      BD.student,BD.class, 
       BD.".$data['term']['type']."_".strtolower($data['examtype'])."_mtc, 
       BD.".$data['term']['type']."_".strtolower($data['examtype'])."_eng,
       BD.".$data['term']['type']."_".strtolower($data['examtype'])."_sci,

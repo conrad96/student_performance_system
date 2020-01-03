@@ -36,7 +36,11 @@
                     <li class="list-group-item">Regno: <b><?php echo $stud['regno']; ?></b></li>
                     <li class="list-group-item">Class: <b><?php echo $stud['class']; ?></b></li>
                     <li class="list-group-item">Date registered: <b><?php echo $stud['dateadded']; ?></b></li>
-                    <li class="list-group-item">Prediction stats: &nbsp;&nbsp;<i class="fa fa-eye"></i> <a data-backdrop="static" data-toggle="modal" href="#prediction">View</a> </li>
+                    <?php 
+                    $class_extract = explode(' ', $stud['class']);
+                    if($class_extract[0] == 'P.7'){
+                      ?>
+                      <li class="list-group-item">Prediction stats: &nbsp;&nbsp;<i class="fa fa-eye"></i> <a data-backdrop="static" data-toggle="modal" href="#prediction">View</a> </li>
                     <div class="modal fade" id="prediction" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                       <div class="modal-dialog">
                         <div class="modal-content">
@@ -54,7 +58,8 @@
                         </div>
                       </div>
                     </div>
-                    <?php 
+                      <?php 
+                    }
                   }
                   ?>                
               </ul>

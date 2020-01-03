@@ -6,6 +6,7 @@
               <thead>
                 <tr>
                   <td>Student</td>
+                  <td>Class</td>
                   <td>TERM</td>
                   <td>EXAM</td>
                   <td>MTC</td>
@@ -28,6 +29,7 @@
                     for($i = 0; $i <= 1399; $i++ ){
                       print '<tr>'. 
                           '<td><a href="'.base_url().'index.php/User/student/'.$term_type.'/'.strtolower($type).'/'.$performance[$i]['id'].'/'.$performance[$i]['sample_id'].'">'.$performance[$i]['student'].'</a></td>'.
+                          '<td>'.$performance[$i]['class'].'</td>'.
                           '<td>'.$term_title.'</td>'.
                           '<td>'.$type.'</td>'.
                           '<td>'.$performance[$i][ $obj_mtc].'</td>'. 
