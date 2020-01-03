@@ -257,8 +257,7 @@
                              } ?>
                           </div>
                           <div class="modal-footer">
-                            <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
-                            <button class="btn btn-success" type="button">Save changes</button>
+                            <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>                            
                           </div>
                         </div>
                       </div>
