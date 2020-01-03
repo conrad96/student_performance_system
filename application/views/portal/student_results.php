@@ -1,3 +1,4 @@
+<div class="row">
 <?php 
               if(!empty($student)){
                 // echo "<pre>";
@@ -7,6 +8,7 @@
                 //echo $params_counter;                
                 if($params_counter > 4 ){
                   //multi series bar charts
+                  print '<div class="col-md-12">';
                   print '<div class="row chart-area">'.
                             '<div class="col-md-6">
                               <div id="chartContainer_term1" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
@@ -20,6 +22,7 @@
                               <div id="chartContainer_term3" style="height: 370px; margin: 0px auto;"></div>
                             </div>
                         </div>';
+                  print '</div>';
                  
                   //logic to get respective terms
                   //term 1 data 
@@ -240,7 +243,7 @@
                   <?php 
                 }else{
                   //one bar graph
-                  print '<div id="chartContainer" class="chartDisplay" style="width: 100%;"></div>';                  
+                  print '<div class="col-md-12"><div id="chartContainer" class="chartDisplay" style="width: 100%;"></div></div>';                  
                   $dataPoints = array();
                   $split_query_str = explode(',', $query_str);
                   $math = array(); $english = array(); $science = array(); $sst = array();
@@ -326,3 +329,4 @@
                   <h4>Students' records not found.</h4>
                 </div>
                 <?php } ?>                      
+</div>

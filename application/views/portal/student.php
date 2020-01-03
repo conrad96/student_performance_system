@@ -36,6 +36,26 @@
                     <li class="list-group-item">Regno: <b><?php echo $stud['regno']; ?></b></li>
                     <li class="list-group-item">Class: <b><?php echo $stud['class']; ?></b></li>
                     <li class="list-group-item">Date registered: <b><?php echo $stud['dateadded']; ?></b></li>
+                    <li class="list-group-item">Prediction stats: <i class="fa fa-eye"></i> <a data-backdrop="static" data-toggle="modal" href="#prediction">View</a> </li>
+                    <div class="modal fade" id="prediction" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">Prediction statistics</h4>
+                          </div>
+                          <div class="modal-body">
+
+                            Stats here...
+
+                          </div>
+                          <div class="modal-footer">
+                            <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
+                            <button class="btn btn-success" type="button">Save changes</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                     <?php 
                   }
                   ?>                
@@ -63,13 +83,14 @@
           </div>
             
         </div>
-        <div class="row" id="resultsCanvas">                    
+        <div class="row">
+          <div class="col-md-12" id="resultsCanvas"></div>                    
              <?php 
              $this->load->view("portal/student_results", 
                     array('student'=> $student)
                   ); 
              ?>
-        </div>  
+        </div>         
        
       </section>
       <div class="text-right">

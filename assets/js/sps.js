@@ -121,6 +121,7 @@ $(document).on('change', '#yearly', function(event){
     });
     
     if(isTermly){
+        $("#terms").show();
         $.ajax({
             type: "post",
             url: getBaseURL + 'index.php/User/filter_student_results',
